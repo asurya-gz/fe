@@ -70,7 +70,7 @@ export default function MyPage() {
       {/* Selamat Datang */}
       <div className="bg-[#f0f0f0] p-8 mx-auto mt-4 w-full text-center rounded-md">
         <h1 className="text-2xl font-semibold mb-4">
-          Sistem Manajemen Klinik Kartika
+          Selamat datang di Sistem Manajemen Klinik Kartika
         </h1>
         <p className="text-gray-600">
           Silahkan login untuk melanjutkan. Gunakan username dan password Anda
