@@ -16,7 +16,7 @@ export default function ApotekerObatList() {
   const handlePrint = async () => {
     try {
       // Fetch the list of drugs before printing
-      const response = await axios.get("http://localhost:4000/obat");
+      const response = await axios.get("https://bekk.up.railway.app/obat");
       const obatListForPrint = response.data.obat;
 
       // Open a new window for printing
@@ -110,7 +110,7 @@ export default function ApotekerObatList() {
     // Fetch user details or check session status
     const fetchUser = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/user", {
+        const response = await axios.get("https://bekk.up.railway.app/user", {
           withCredentials: true,
         });
         console.log("User data:", response.data);
@@ -131,7 +131,7 @@ export default function ApotekerObatList() {
     // Fetch the list of drugs
     const fetchObatList = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/obat");
+        const response = await axios.get("https://bekk.up.railway.app/obat");
         console.log("Obat list:", response.data.obat);
         setObatList(response.data.obat);
       } catch (error) {

@@ -1,6 +1,6 @@
 "use client";
 // Import
-import { Breadcrumb} from "flowbite-react";
+import { Breadcrumb } from "flowbite-react";
 import { HiHome } from "react-icons/hi";
 import { FaListUl } from "react-icons/fa";
 import { MdSummarize } from "react-icons/md";
@@ -20,7 +20,7 @@ export default function ApotekerTransaksiRiwayat() {
     // Fetch user details or check session status
     const fetchUser = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/user", {
+        const response = await axios.get("https://bekk.up.railway.app/user", {
           withCredentials: true,
         });
         console.log("User data:", response.data);

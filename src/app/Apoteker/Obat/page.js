@@ -17,7 +17,7 @@ export default function ApotekerObat() {
     // Fetch user details or check session status
     const fetchUser = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/user", {
+        const response = await axios.get("https://bekk.up.railway.app/user", {
           withCredentials: true,
         });
         console.log("User data:", response.data);

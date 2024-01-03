@@ -22,7 +22,7 @@ export default function Pemilik() {
     // Fetch user details or check session status
     const fetchUser = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/user", {
+        const response = await axios.get("https://bekk.up.railway.app/user", {
           withCredentials: true,
         });
         console.log("User data:", response.data);
@@ -62,7 +62,7 @@ export default function Pemilik() {
   const handleLogout = async () => {
     try {
       // Menghapus sesi (session) dari server
-      await axios.post("http://localhost:4000/logout", null, {
+      await axios.post("https://bekk.up.railway.app/logout", null, {
         withCredentials: true,
       });
 

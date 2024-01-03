@@ -22,7 +22,7 @@ export default function ApotekerTransaksiPembelian() {
     // Fetch user details or check session status
     const fetchUser = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/user", {
+        const response = await axios.get("https://bekk.up.railway.app/user", {
           withCredentials: true,
         });
         console.log("User data:", response.data);
@@ -41,7 +41,7 @@ export default function ApotekerTransaksiPembelian() {
     // Fetch the list of drugs
     const fetchObatList = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/obat");
+        const response = await axios.get("https://bekk.up.railway.app/obat");
         console.log("Obat list:", response.data.obat);
 
         // Make sure response.data.obat is defined and is an array
@@ -79,7 +79,7 @@ export default function ApotekerTransaksiPembelian() {
     try {
       // Buat transaksi baru
       const responseTransaksi = await axios.post(
-        "http://localhost:4000/transaksi",
+        "https://bekk.up.railway.app/transaksi",
         {
           nama_pembeli: namaPembeli,
           total_harga: totalHarga, // Ubah sesuai kebutuhan
@@ -93,7 +93,7 @@ export default function ApotekerTransaksiPembelian() {
       await Promise.all(
         drugEntries.map(async (entry) => {
           // Buat detail transaksi
-          await axios.post("http://localhost:4000/detail_transaksi", {
+          await axios.post("https://bekk.up.railway.app/detail_transaksi", {
             transaksi_id: transaksiId,
             obat_id: entry.obat.id,
             quantity: entry.jumlah,
@@ -102,7 +102,7 @@ export default function ApotekerTransaksiPembelian() {
 
           // Update jumlah obat di tabel obat
           await axios.patch(
-            `http://localhost:4000/transaksiobat/${entry.obat.id}`,
+            `https://bekk.up.railway.app/transaksiobat/${entry.obat.id}`,
             {
               jumlah: entry.obat.jumlah - entry.jumlah,
             }

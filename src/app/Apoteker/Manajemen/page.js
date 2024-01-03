@@ -25,12 +25,12 @@ export default function ApotekerManajemen() {
     try {
       // Send the updated obat data to the server
       await axios.put(
-        `http://localhost:4000/obat/${editedObat.id}`,
+        `https://bekk.up.railway.app/obat/${editedObat.id}`,
         editedObat
       );
 
       // Fetch the updated obat list after a successful update
-      const response = await axios.get("http://localhost:4000/obat");
+      const response = await axios.get("https://bekk.up.railway.app/obat");
       setObatList(response.data.obat);
 
       // Reset the editedObat state
@@ -73,7 +73,7 @@ export default function ApotekerManajemen() {
     // Fetch the list of drugs
     const fetchObatList = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/obat");
+        const response = await axios.get("https://bekk.up.railway.app/obat");
         console.log("Obat list:", response.data.obat);
 
         // Pastikan response.data.obat terdefinisi dan merupakan array
@@ -95,7 +95,7 @@ export default function ApotekerManajemen() {
     // Fetch user details or check session status
     const fetchUser = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/user", {
+        const response = await axios.get("https://bekk.up.railway.app/user", {
           withCredentials: true,
         });
         console.log("User data:", response.data);
@@ -115,7 +115,7 @@ export default function ApotekerManajemen() {
   const handleDelete = async (obatId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:4000/obat/${obatId}`
+        `https://bekk.up.railway.app/obat/${obatId}`
       );
       console.log(response.data);
 
@@ -130,9 +130,9 @@ export default function ApotekerManajemen() {
 
   const addObat = async () => {
     try {
-      await axios.post("http://localhost:4000/tambahobat", newObat);
+      await axios.post("https://bekk.up.railway.app/tambahobat", newObat);
       // Ambil data obat setelah berhasil menambahkan obat baru
-      const response = await axios.get("http://localhost:4000/obat");
+      const response = await axios.get("https://bekk.up.railway.app/obat");
       setObatList(response.data.obat);
       closeModal();
     } catch (error) {

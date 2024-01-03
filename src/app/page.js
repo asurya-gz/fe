@@ -18,7 +18,7 @@ export default function MyPage() {
 
     try {
       const response = await axios.post(
-        `http://localhost:4000/login`,
+        `https://bekk.up.railway.app/login`,
         {
           username,
           password,
