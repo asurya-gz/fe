@@ -40,13 +40,18 @@ export default function MyPage() {
     } catch (error) {
       console.error("Login failed:", error.message);
 
-      if (error.response && error.response.status === 401) {
-        setErrorMessage("Username or password is incorrect");
-        setShowAlert(true);
+      if (error.response) {
+        console.error("Response status:", error.response.status);
+        if (error.response.status === 401) {
+          setErrorMessage("Username or password is incorrect");
+        } else {
+          setErrorMessage("Login failed. Please try again later.");
+        }
       } else {
         setErrorMessage("Login failed. Please try again later.");
-        setShowAlert(true);
       }
+
+      setShowAlert(true);
     }
   };
 
@@ -117,8 +122,7 @@ export default function MyPage() {
           </form>
           {showAlert && (
             <Alert color="failure" icon={HiInformationCircle}>
-              <span className="font-medium">Login Gagal!</span> Username atau
-              Password salah!
+              <span className="font-medium">{errorMessage}</span>
             </Alert>
           )}
         </Card>
