@@ -23,7 +23,7 @@ export default function ApotekerTransaksiPembelian() {
     // Fetch user details or check session status
     const fetchUser = async () => {
       try {
-        const response = await axios.get("https://bekk.up.railway.app/user", {
+        const response = await axios.get("http://localhost:4000/user", {
           withCredentials: true,
         });
         console.log("User data:", response.data);
@@ -42,7 +42,7 @@ export default function ApotekerTransaksiPembelian() {
     // Fetch the list of drugs
     const fetchObatList = async () => {
       try {
-        const response = await axios.get("https://bekk.up.railway.app/obat");
+        const response = await axios.get("http://localhost:4000/obat");
         console.log("Obat list:", response.data.obat);
 
         // Make sure response.data.obat is defined and is an array
@@ -93,19 +93,32 @@ export default function ApotekerTransaksiPembelian() {
       // Proses setiap entri obat
       await Promise.all(
         drugEntries.map(async (entry) => {
+          let selectedObat = entry.obat;
+
+          // Jika obat tidak ada, coba cari berdasarkan nama
+          if (!selectedObat && entry.obatName) {
+            selectedObat = findObatByName(entry.obatName);
+          }
+
+          // Pastikan obat yang dipilih valid
+          if (!selectedObat) {
+            console.error(`Obat not found: ${entry.obatName}`);
+            return;
+          }
+
           // Buat detail transaksi
           await axios.post("https://bekk.up.railway.app/detail_transaksi", {
             transaksi_id: transaksiId,
-            obat_id: entry.obat.id,
+            obat_id: selectedObat.id,
             quantity: entry.jumlah,
             harga: entry.harga,
           });
 
           // Update jumlah obat di tabel obat
           await axios.patch(
-            `https://bekk.up.railway.app/transaksiobat/${entry.obat.id}`,
+            `https://bekk.up.railway.app/transaksiobat/${selectedObat.id}`,
             {
-              jumlah: entry.obat.jumlah - entry.jumlah,
+              jumlah: selectedObat.jumlah - entry.jumlah,
             }
           );
         })
@@ -117,6 +130,23 @@ export default function ApotekerTransaksiPembelian() {
       window.location.reload();
       // Handle error, tampilkan pesan kesalahan, dll.
     }
+  };
+
+  // Di luar komponen
+  const findObatByName = (namaObat) => {
+    return obatList.find((obat) => obat.nama_obat === namaObat) || null;
+  };
+
+  const handleObatChange = (e, index) => {
+    const namaObat = e.target.value;
+    const selectedObat = findObatByName(namaObat);
+    const updatedEntries = [...drugEntries];
+    updatedEntries[index] = {
+      obat: selectedObat,
+      jumlah: updatedEntries[index].jumlah,
+      harga: selectedObat ? selectedObat.harga : 0,
+    };
+    setDrugEntries(updatedEntries);
   };
 
   return (
