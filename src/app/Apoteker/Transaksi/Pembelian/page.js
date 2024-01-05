@@ -4,6 +4,7 @@ import { HiHome } from "react-icons/hi";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import Select from "react-select";
 
 export default function ApotekerTransaksiPembelian() {
   const router = useRouter();
@@ -154,34 +155,28 @@ export default function ApotekerTransaksiPembelian() {
               <label htmlFor={`obat-${index}`} className="mb-2 block">
                 Pilih Obat {index + 1}
               </label>
-              <select
+              <Select
                 id={`obat-${index}`}
-                style={{
-                  backgroundColor: "white",
-                  color: "#333",
-                  width: "100%",
-                }}
-                onChange={(e) => {
-                  const selectedItem = e.target.value;
-                  const obat = obatList.find(
-                    (o) => o.nama_obat === selectedItem
+                options={obatList.map((obat) => ({
+                  value: obat.id,
+                  label: obat.nama_obat,
+                }))}
+                onChange={(selectedOption) => {
+                  const selectedObat = obatList.find(
+                    (obat) => obat.id === selectedOption.value
                   );
                   const updatedEntries = [...drugEntries];
                   updatedEntries[index] = {
-                    obat,
+                    obat: selectedObat,
                     jumlah: updatedEntries[index].jumlah,
-                    harga: obat ? obat.harga : 0,
+                    harga: selectedObat ? selectedObat.harga : 0,
                   };
                   setDrugEntries(updatedEntries);
                 }}
-              >
-                <option value="">Pilih Obat</option>
-                {obatList.map((obat) => (
-                  <option key={obat.id} value={obat.nama_obat}>
-                    {obat.nama_obat}
-                  </option>
-                ))}
-              </select>
+                isSearchable={true}
+                placeholder="Cari dan Pilih Obat"
+                noOptionsMessage={() => "Obat tidak ditemukan"}
+              />
 
               <div>
                 <div className="mb-2 block">
@@ -235,6 +230,7 @@ export default function ApotekerTransaksiPembelian() {
               <p>Total Harga: Rp. {entry.jumlah * entry.harga}</p>
             </div>
           ))}
+
           <div className="flex items-center gap-2 mt-8">
             <Button color="dark" pill onClick={addDrugEntry}>
               Tambah Obat

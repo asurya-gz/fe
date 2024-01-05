@@ -149,7 +149,7 @@ export default function ApotekerManajemen() {
   };
 
   return (
-    <div className="bg-[#f0f0f0] h-screen">
+    <div className="bg-[#f0f0f0] min-h-screen">
       {" "}
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
