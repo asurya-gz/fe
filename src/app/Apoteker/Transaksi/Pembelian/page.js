@@ -23,7 +23,7 @@ export default function ApotekerTransaksiPembelian() {
     // Fetch user details or check session status
     const fetchUser = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/user", {
+        const response = await axios.get("https://bekk.up.railway.app/user", {
           withCredentials: true,
         });
         console.log("User data:", response.data);
@@ -42,7 +42,7 @@ export default function ApotekerTransaksiPembelian() {
     // Fetch the list of drugs
     const fetchObatList = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/obat");
+        const response = await axios.get("https://bekk.up.railway.app/obat");
         console.log("Obat list:", response.data.obat);
 
         // Make sure response.data.obat is defined and is an array

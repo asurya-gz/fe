@@ -7,7 +7,7 @@ import axios from "axios";
 import { Table } from "flowbite-react";
 import { Button } from "flowbite-react";
 
-export default function ApotekerTransaksiRiwayat() {
+export default function PemilikApotekerRiwayat() {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [transaksiData, setTransaksiData] = useState([]);
@@ -236,10 +236,10 @@ export default function ApotekerTransaksiRiwayat() {
     <div className="bg-[#f0f0f0] h-screen">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
-        <Breadcrumb.Item href="/Apoteker" icon={HiHome}>
+        <Breadcrumb.Item href="/Pemilik" icon={HiHome}>
           Dashboard
         </Breadcrumb.Item>
-        <Breadcrumb.Item href="/Apoteker/Transaksi">Transaksi</Breadcrumb.Item>
+        <Breadcrumb.Item href="/Pemilik/Apoteker">Apoteker</Breadcrumb.Item>
         <Breadcrumb.Item href="#">Riwayat</Breadcrumb.Item>
       </Breadcrumb>
       {/* Breadcrumb end */}
