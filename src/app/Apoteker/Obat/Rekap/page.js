@@ -18,7 +18,7 @@ export default function ApotekerObatRekap() {
     // Fetch the list of drugs
     const fetchObatList = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/obat");
+        const response = await axios.get("https://bekk.up.railway.app/obat");
         console.log("Obat list:", response.data.obat);
         setObatList(response.data.obat);
       } catch (error) {
@@ -35,7 +35,7 @@ export default function ApotekerObatRekap() {
     // Fetch user details or check session status
     const fetchUser = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/user", {
+        const response = await axios.get("https://bekk.up.railway.app/user", {
           withCredentials: true,
         });
         console.log("User data:", response.data);
@@ -65,7 +65,7 @@ export default function ApotekerObatRekap() {
   const handlePrint = async () => {
     try {
       // Fetch the list of drugs based on the selected filter
-      const response = await axios.get("http://localhost:4000/obat");
+      const response = await axios.get("https://bekk.up.railway.app/obat");
       const obatListForPrint = response.data.obat.filter((obat) => {
         if (filterValue === "Semua") {
           return true;
