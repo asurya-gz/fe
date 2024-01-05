@@ -16,9 +16,7 @@ export default function ApotekerTransaksiRiwayat() {
   useEffect(() => {
     const fetchTransaksiData = async () => {
       try {
-        const response = await axios.get(
-          "https://bekk.up.railway.app/datatransaksi"
-        );
+        const response = await axios.get("https://bekk.up.railway.app/datatransaksi");
         console.log("Transaksi data:", response.data);
 
         // Make sure response.data.transaksi is defined and is an array
@@ -78,9 +76,7 @@ export default function ApotekerTransaksiRiwayat() {
   const handlePrintRiwayat = async () => {
     try {
       // Fetch the list of transactions based on the filter
-      const response = await axios.get(
-        "https://bekk.up.railway.app/datatransaksi"
-      );
+      const response = await axios.get("https://bekk.up.railway.app/datatransaksi");
       const transaksiListForPrint = response.data.transaksi;
 
       // Filter the transactions based on the selected filter option
