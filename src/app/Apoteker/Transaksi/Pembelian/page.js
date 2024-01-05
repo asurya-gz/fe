@@ -4,6 +4,7 @@ import { HiHome } from "react-icons/hi";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import Select from "react-select";
 
 export default function ApotekerTransaksiPembelian() {
   const router = useRouter();
@@ -132,141 +133,120 @@ export default function ApotekerTransaksiPembelian() {
       </Breadcrumb>
       {/* Breadcrumb end */}
 
-     {/* form Pembelian  */}
-<div className="flex justify-center items-center">
-  <form className="flex mt-8 w-[75%] flex-col gap-4">
-    <div>
-      <div className="mb-2 block">
-        <Label htmlFor="np" value="Nama Pembeli" />
-      </div>
-      <TextInput
-        id="np"
-        type="text"
-        placeholder="Nama Pembeli"
-        value={namaPembeli}
-        onChange={(e) => setNamaPembeli(e.target.value)}
-        required
-      />
-    </div>
-    {drugEntries.map((entry, index) => (
-      <div key={index}>
-        <label htmlFor={`obat-${index}`} className="mb-2 block">
-          Pilih Obat {index + 1}
-        </label>
-        <div className="relative">
-          <input
-            type="text"
-            placeholder="Cari Obat"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full border border-gray-300 p-2 rounded"
-          />
-          <select
-            id={`obat-${index}`}
-            style={{
-              backgroundColor: "white",
-              color: "#333",
-              width: "100%",
-              marginTop: "8px",
-            }}
-            onChange={(e) => {
-              const selectedItem = e.target.value;
-              const obat = obatList.find(
-                (o) => o.nama_obat === selectedItem
-              );
-              const updatedEntries = [...drugEntries];
-              updatedEntries[index] = {
-                obat,
-                jumlah: updatedEntries[index].jumlah,
-                harga: obat ? obat.harga : 0,
-              };
-              setDrugEntries(updatedEntries);
-            }}
-          >
-            <option value="">Pilih Obat</option>
-            {obatList
-              .filter((obat) =>
-                obat.nama_obat
-                  .toLowerCase()
-                  .includes(searchTerm.toLowerCase())
-              )
-              .map((obat) => (
-                <option key={obat.id} value={obat.nama_obat}>
-                  {obat.nama_obat}
-                </option>
-              ))}
-          </select>
-        </div>
-
-        <div>
-          <div className="mb-2 block">
-            <Label
-              htmlFor={`jumlah-${index}`}
-              value={`Jumlah Obat ${index + 1}`}
+      {/* form Pembelian  */}
+      <div className="flex justify-center items-center">
+        {" "}
+        <form className="flex mt-8 w-[75%] flex-col gap-4">
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="np" value="Nama Pembeli" />
+            </div>
+            <TextInput
+              id="np"
+              type="text"
+              placeholder="Nama Pembeli"
+              value={namaPembeli}
+              onChange={(e) => setNamaPembeli(e.target.value)}
+              required
             />
           </div>
-          <TextInput
-            id={`jumlah-${index}`}
-            type="number"
-            placeholder={`Ex : 3`}
-            value={entry.jumlah}
-            onChange={(e) => {
-              const updatedEntries = [...drugEntries];
-              updatedEntries[index] = {
-                obat: updatedEntries[index].obat,
-                jumlah: parseInt(e.target.value, 10),
-                harga: updatedEntries[index].harga,
-              };
-              setDrugEntries(updatedEntries);
-            }}
-            required
-          />
-        </div>
+          {drugEntries.map((entry, index) => (
+            <div key={index}>
+              <label htmlFor={`obat-${index}`} className="mb-2 block">
+                Pilih Obat {index + 1}
+              </label>
+              <Select
+                id={`obat-${index}`}
+                options={obatList.map((obat) => ({
+                  value: obat.id,
+                  label: obat.nama_obat,
+                }))}
+                onChange={(selectedOption) => {
+                  const selectedObat = obatList.find(
+                    (obat) => obat.id === selectedOption.value
+                  );
+                  const updatedEntries = [...drugEntries];
+                  updatedEntries[index] = {
+                    obat: selectedObat,
+                    jumlah: updatedEntries[index].jumlah,
+                    harga: selectedObat ? selectedObat.harga : 0,
+                  };
+                  setDrugEntries(updatedEntries);
+                }}
+                isSearchable={true}
+                placeholder="Cari dan Pilih Obat"
+                noOptionsMessage={() => "Obat tidak ditemukan"}
+              />
 
-        <div>
-          <div className="mb-2 block">
-            <Label
-              htmlFor={`harga-${index}`}
-              value={`Harga Satuan Obat ${index + 1}`}
-            />
+              <div>
+                <div className="mb-2 block">
+                  <Label
+                    htmlFor={`jumlah-${index}`}
+                    value={`Jumlah Obat ${index + 1}`}
+                  />
+                </div>
+                <TextInput
+                  id={`jumlah-${index}`}
+                  type="number"
+                  placeholder={`Ex : 3`}
+                  value={entry.jumlah}
+                  onChange={(e) => {
+                    const updatedEntries = [...drugEntries];
+                    updatedEntries[index] = {
+                      obat: updatedEntries[index].obat,
+                      jumlah: parseInt(e.target.value, 10),
+                      harga: updatedEntries[index].harga,
+                    };
+                    setDrugEntries(updatedEntries);
+                  }}
+                  required
+                />
+              </div>
+
+              <div>
+                <div className="mb-2 block">
+                  <Label
+                    htmlFor={`harga-${index}`}
+                    value={`Harga Satuan Obat ${index + 1}`}
+                  />
+                </div>
+                <TextInput
+                  id={`harga-${index}`}
+                  type="number"
+                  value={entry.harga || ""}
+                  onChange={(e) => {
+                    const hargaValue = parseInt(e.target.value, 10);
+                    const updatedEntries = [...drugEntries];
+                    updatedEntries[index] = {
+                      obat: updatedEntries[index].obat,
+                      jumlah: updatedEntries[index].jumlah,
+                      harga: isNaN(hargaValue) ? 0 : hargaValue,
+                    };
+                    setDrugEntries(updatedEntries);
+                  }}
+                  required
+                />
+              </div>
+              <p>Total Harga: Rp. {entry.jumlah * entry.harga}</p>
+            </div>
+          ))}
+
+          <div className="flex items-center gap-2 mt-8">
+            <Button color="dark" pill onClick={addDrugEntry}>
+              Tambah Obat
+            </Button>
+            <Button color="failure" pill onClick={removeLastDrugEntry}>
+              Batal
+            </Button>
           </div>
-          <TextInput
-            id={`harga-${index}`}
-            type="number"
-            value={entry.harga || ""}
-            onChange={(e) => {
-              const hargaValue = parseInt(e.target.value, 10);
-              const updatedEntries = [...drugEntries];
-              updatedEntries[index] = {
-                obat: updatedEntries[index].obat,
-                jumlah: updatedEntries[index].jumlah,
-                harga: isNaN(hargaValue) ? 0 : hargaValue,
-              };
-              setDrugEntries(updatedEntries);
-            }}
-            required
-          />
-        </div>
-        <p>Total Harga: Rp. {entry.jumlah * entry.harga}</p>
+          {/* Display total harga for all entries */}
+          <p className="mt-4">Total Harga Semua Obat: Rp. {totalHarga}</p>
+          <Button className="bg-green-500" onClick={beliObat} type="button">
+            Beli Obat
+          </Button>
+        </form>
       </div>
-    ))}
-    <div className="flex items-center gap-2 mt-8">
-      <Button color="dark" pill onClick={addDrugEntry}>
-        Tambah Obat
-      </Button>
-      <Button color="failure" pill onClick={removeLastDrugEntry}>
-        Batal
-      </Button>
-    </div>
-    {/* Display total harga for all entries */}
-    <p className="mt-4">Total Harga Semua Obat: Rp. {totalHarga}</p>
-    <Button className="bg-green-500" onClick={beliObat} type="button">
-      Beli Obat
-    </Button>
-  </form>
-</div>
-{/* form Pembelian end */}
-
+      {/* form Pembelian end */}
     </div>
   );
 }
