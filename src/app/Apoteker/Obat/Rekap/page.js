@@ -53,7 +53,7 @@ export default function ApotekerObatRekap() {
 
   // Saran pembelian
   const handleSaranPembelian = (jumlahObat) => {
-    if (jumlahObat < 5) {
+    if (jumlahObat < 3) {
       return "Beli Obat";
     } else {
       return "Obat Tersedia";
