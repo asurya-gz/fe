@@ -112,15 +112,15 @@ export default function ApotekerObatRekap() {
                     padding: 8px;
                     text-align: left;
                   ">
-                    Id
-                  </th>
-                  <th style="
-                    border: 1px solid #ddd;
-                    padding: 8px;
-                    text-align: left;
-                  ">
                     Nama
                   </th>
+                  <th style="
+                  border: 1px solid #ddd;
+                  padding: 8px;
+                  text-align: left;
+                ">
+                  Jenis
+                </th>
                   <th style="
                     border: 1px solid #ddd;
                     padding: 8px;
@@ -148,12 +148,12 @@ export default function ApotekerObatRekap() {
                           border: 1px solid #ddd;
                           padding: 8px;
                           text-align: left;
-                        ">${obat.id}</td>
+                        ">${obat.nama_obat}</td>
                         <td style="
                           border: 1px solid #ddd;
                           padding: 8px;
                           text-align: left;
-                        ">${obat.nama_obat}</td>
+                        ">${obat.jenis}</td>
                         <td style="
                           border: 1px solid #ddd;
                           padding: 8px;
@@ -219,10 +219,10 @@ export default function ApotekerObatRekap() {
         <Table hoverable>
           <Table.Head>
             <Table.HeadCell style={{ background: "#333", color: "white" }}>
-              ID
+              Obat
             </Table.HeadCell>
             <Table.HeadCell style={{ background: "#333", color: "white" }}>
-              Obat
+              Jenis
             </Table.HeadCell>
             <Table.HeadCell style={{ background: "#333", color: "white" }}>
               Jumlah
@@ -242,8 +242,8 @@ export default function ApotekerObatRekap() {
               })
               .map((obat) => (
                 <Table.Row key={obat.id}>
-                  <Table.Cell>{obat.id}</Table.Cell>
                   <Table.Cell>{obat.nama_obat}</Table.Cell>
+                  <Table.Cell>{obat.jenis}</Table.Cell>
                   <Table.Cell>{obat.jumlah}</Table.Cell>
                   <Table.Cell>{handleSaranPembelian(obat.jumlah)}</Table.Cell>
                 </Table.Row>

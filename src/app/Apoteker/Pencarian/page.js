@@ -91,10 +91,10 @@ export default function ApotekerPencarian() {
         <Table hoverable>
           <Table.Head>
             <Table.HeadCell style={{ background: "#333", color: "white" }}>
-              ID
+              Obat
             </Table.HeadCell>
             <Table.HeadCell style={{ background: "#333", color: "white" }}>
-              Obat
+              Jenis
             </Table.HeadCell>
             <Table.HeadCell style={{ background: "#333", color: "white" }}>
               Jumlah
@@ -106,8 +106,8 @@ export default function ApotekerPencarian() {
           <Table.Body>
             {filteredObatList.map((obat) => (
               <Table.Row key={obat.id}>
-                <Table.Cell>{obat.id}</Table.Cell>
                 <Table.Cell>{obat.nama_obat}</Table.Cell>
+                <Table.Cell>{obat.jenis}</Table.Cell>
                 <Table.Cell>{obat.jumlah}</Table.Cell>
                 <Table.Cell>Rp. {obat.harga}</Table.Cell>
               </Table.Row>

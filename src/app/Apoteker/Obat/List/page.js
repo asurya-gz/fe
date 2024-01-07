@@ -170,12 +170,16 @@ export default function ApotekerObatList() {
             <Table.HeadCell style={{ background: "#333", color: "white" }}>
               Harga
             </Table.HeadCell>
+            <Table.HeadCell style={{ background: "#333", color: "white" }}>
+              Jenis
+            </Table.HeadCell>
           </Table.Head>
           <Table.Body>
             {obatList.map((obat) => (
               <Table.Row key={obat.id}>
                 <Table.Cell>{obat.nama_obat}</Table.Cell>
                 <Table.Cell>Rp. {obat.harga}</Table.Cell>
+                <Table.Cell>{obat.jenis}</Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>

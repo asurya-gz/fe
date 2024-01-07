@@ -36,7 +36,7 @@ export default function ApotekerObat() {
   const menuItems = [
     {
       icon: <FaListUl size="2em" />,
-      label: "List Harga",
+      label: "List",
       link: "/Apoteker/Obat/List",
     },
     {

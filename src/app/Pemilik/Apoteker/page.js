@@ -16,6 +16,7 @@ import { useRouter } from "next/navigation";
 import { FaList, FaClipboard, FaHistory, FaSearch } from "react-icons/fa";
 
 export default function PemilikApoteker() {
+  const router = useRouter();
   const [user, setUser] = useState(null);
 
   useEffect(() => {
