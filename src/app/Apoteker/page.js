@@ -50,11 +50,6 @@ export default function Apoteker() {
       link: "Apoteker/Transaksi",
     },
     {
-      icon: <AiOutlineAppstore size="2em" />,
-      label: "Manajemen",
-      link: "Apoteker/Manajemen",
-    },
-    {
       icon: <AiOutlineSearch size="2em" />,
       label: "Pencarian",
       link: "/Apoteker/Pencarian",
