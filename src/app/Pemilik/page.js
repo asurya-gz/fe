@@ -8,6 +8,7 @@ import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FaUserNurse } from "react-icons/fa";
+import { Alert } from "flowbite-react";
 
 export default function Pemilik() {
   const router = useRouter();
@@ -33,7 +34,7 @@ export default function Pemilik() {
 
   const menuItems = [
     {
-      icon: <FaUserNurse size="2em" />,
+      icon: <FaUserNurse size="2em" color="green" />,
       label: "Apoteker",
       link: "Pemilik/Apoteker",
     },
@@ -55,7 +56,7 @@ export default function Pemilik() {
   };
 
   return (
-    <div className="h-screen bg-[#f0f0f0] relative">
+    <div className="h-screen bg-[#ffcccc] relative">
       {/* Navbar */}
       <Navbar fluid rounded>
         <Navbar.Brand href="https://flowbite-react.com">
@@ -96,6 +97,13 @@ export default function Pemilik() {
       </Breadcrumb>
       {/* Breadcrumb end */}
 
+      {/* info  */}
+      <Alert className="mt-4" color="info">
+        <span className="font-medium">Info Update!</span> List Obat Sudah Ada
+        Filter Sesuai Jenis Obat
+      </Alert>
+      {/* info  end */}
+
       {/* Box profile */}
       <div className="mt-4 p-4">
         <div className="bg-white p-6 rounded-lg shadow-md text-center">
@@ -120,7 +128,7 @@ export default function Pemilik() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
         {menuItems.map((menuItem, index) => (
           <Link href={menuItem.link} key={index}>
-            <div className="bg-white p-6 rounded-lg shadow-md text-center cursor-pointer">
+            <div className="bg-white bg-opacity-50 backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer text-black">
               <div className="flex flex-col items-center">
                 {menuItem.icon}
                 <p className="mt-2">{menuItem.label}</p>

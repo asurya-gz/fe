@@ -39,28 +39,28 @@ export default function PemilikApoteker() {
 
   const menuItems = [
     {
-      icon: <FaList size="2em" />,
+      icon: <FaList size="2em" color="green" />,
       label: "List Obat",
       link: "/Pemilik/Apoteker/List",
     },
     {
-      icon: <FaClipboard size="2em" />,
+      icon: <FaClipboard size="2em" color="pink" />,
       label: "Rekap Obat",
       link: "/Pemilik/Apoteker/Rekap",
     },
     {
-      icon: <FaHistory size="2em" />,
+      icon: <FaHistory size="2em" color="gray" />,
       label: "Riwayat Transaksi",
       link: "/Pemilik/Apoteker/Riwayat",
     },
     {
-      icon: <FaSearch size="2em" />,
+      icon: <FaSearch size="2em" color="black" />,
       label: "Pencarian",
       link: "/Pemilik/Apoteker/Pencarian",
     },
   ];
   return (
-    <div className="h-screen bg-[#f0f0f0] relative">
+    <div className="h-screen bg-[#ffcccc] relative">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
         <Breadcrumb.Item href="/Pemilik" icon={HiHome}>
@@ -73,7 +73,7 @@ export default function PemilikApoteker() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
         {menuItems.map((menuItem, index) => (
           <Link href={menuItem.link} key={index}>
-            <div className="bg-white p-6 rounded-lg shadow-md text-center cursor-pointer">
+            <div className="bg-white bg-opacity-50 backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer text-black">
               <div className="flex flex-col items-center">
                 {menuItem.icon}
                 <p className="mt-2">{menuItem.label}</p>

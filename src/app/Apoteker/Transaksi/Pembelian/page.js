@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import Select from "react-select";
+import { AiOutlinePlusCircle, AiOutlineShoppingCart } from "react-icons/ai";
 
 export default function ApotekerTransaksiPembelian() {
   const router = useRouter();
@@ -150,7 +151,7 @@ export default function ApotekerTransaksiPembelian() {
   };
 
   return (
-    <div className="bg-[#f0f0f0] min-h-screen">
+    <div className="bg-[#ffcccc] min-h-screen">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
         <Breadcrumb.Item href="/Apoteker" icon={HiHome}>
@@ -263,6 +264,10 @@ export default function ApotekerTransaksiPembelian() {
 
           <div className="flex items-center gap-2 mt-8">
             <Button color="dark" pill onClick={addDrugEntry}>
+              <AiOutlinePlusCircle
+                size="1.5em"
+                style={{ marginRight: "0.5em" }}
+              />
               Tambah Obat
             </Button>
             <Button color="failure" pill onClick={removeLastDrugEntry}>
@@ -272,6 +277,10 @@ export default function ApotekerTransaksiPembelian() {
           {/* Display total harga for all entries */}
           <p className="mt-4">Total Harga Semua Obat: Rp. {totalHarga}</p>
           <Button className="bg-green-500" onClick={beliObat} type="button">
+            <AiOutlineShoppingCart
+              size="1.5em"
+              style={{ marginRight: "0.5em" }}
+            />
             Beli Obat
           </Button>
         </form>

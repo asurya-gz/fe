@@ -6,6 +6,7 @@ import { Table } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { FiPrinter } from "react-icons/fi";
 
 export default function ApotekerObatRekap() {
   const router = useRouter();
@@ -185,10 +186,10 @@ export default function ApotekerObatRekap() {
   // Print end
 
   return (
-    <div className="h-screen">
+    <div className="min-h-screen bg-[#ffcccc]">
       {" "}
       {/* Breadcrumb */}
-      <Breadcrumb className="mt-4 ml-4" aria-label="Default breadcrumb example">
+      <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
         <Breadcrumb.Item href="/Apoteker" icon={HiHome}>
           Dashboard
         </Breadcrumb.Item>
@@ -198,7 +199,8 @@ export default function ApotekerObatRekap() {
       {/* Breadcrumb end */}
       {/* Cetak rekap Obat */}
       <Button className="mt-8 ml-4" color="light" pill onClick={handlePrint}>
-        Cetak Rekap Obat
+        <FiPrinter size="1.5em" style={{ marginRight: "0.5em" }} />
+        Cetak
       </Button>
       {/* Cetak rekap Obat end */}
       {/* Filter */}
@@ -242,10 +244,14 @@ export default function ApotekerObatRekap() {
               })
               .map((obat) => (
                 <Table.Row key={obat.id}>
-                  <Table.Cell>{obat.nama_obat}</Table.Cell>
-                  <Table.Cell>{obat.jenis}</Table.Cell>
-                  <Table.Cell>{obat.jumlah}</Table.Cell>
-                  <Table.Cell>{handleSaranPembelian(obat.jumlah)}</Table.Cell>
+                  <Table.Cell className="text-black">
+                    {obat.nama_obat}
+                  </Table.Cell>
+                  <Table.Cell className="text-black">{obat.jenis}</Table.Cell>
+                  <Table.Cell className="text-black">{obat.jumlah}</Table.Cell>
+                  <Table.Cell className="text-black">
+                    {handleSaranPembelian(obat.jumlah)}
+                  </Table.Cell>
                 </Table.Row>
               ))}
           </Table.Body>

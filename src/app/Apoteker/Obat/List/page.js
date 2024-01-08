@@ -6,6 +6,7 @@ import { Button } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { FiPrinter } from "react-icons/fi";
 
 export default function ApotekerObatList() {
   const router = useRouter();
@@ -162,7 +163,7 @@ export default function ApotekerObatList() {
   // Fetch Data Obat end
 
   return (
-    <div className="h-screen bg-[#f0f0f0]">
+    <div className="min-h-screen bg-[#ffcccc]">
       {" "}
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
@@ -175,7 +176,8 @@ export default function ApotekerObatList() {
       {/* Breadcrumb end */}
       {/* Button Cetak List Obat */}
       <Button className="mt-8 ml-4" color="light" pill onClick={handlePrint}>
-        Cetak List Obat
+        <FiPrinter size="1.5em" style={{ marginRight: "0.5em" }} />
+        Cetak
       </Button>
       {/* Button Cetak List Obat End*/}
       {/* Dropdown Filter */}
@@ -210,9 +212,9 @@ export default function ApotekerObatList() {
           <Table.Body>
             {obatList.map((obat) => (
               <Table.Row key={obat.id}>
-                <Table.Cell>{obat.nama_obat}</Table.Cell>
-                <Table.Cell>Rp. {obat.harga}</Table.Cell>
-                <Table.Cell>{obat.jenis}</Table.Cell>
+                <Table.Cell className="text-black">{obat.nama_obat}</Table.Cell>
+                <Table.Cell className="text-black">Rp. {obat.harga}</Table.Cell>
+                <Table.Cell className="text-black">{obat.jenis}</Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>

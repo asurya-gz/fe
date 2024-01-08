@@ -58,7 +58,7 @@ export default function PemilikApotekerPencarian() {
     fetchUser();
   }, [router]);
   return (
-    <div className="bg-[#f0f0f0] h-screen">
+    <div className="bg-[#ffcccc] h-screen">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
         <Breadcrumb.Item href="/Pemilik" icon={HiHome}>
@@ -94,7 +94,7 @@ export default function PemilikApotekerPencarian() {
         <Table hoverable>
           <Table.Head>
             <Table.HeadCell style={{ background: "#333", color: "white" }}>
-              ID
+              Jenis
             </Table.HeadCell>
             <Table.HeadCell style={{ background: "#333", color: "white" }}>
               Obat
@@ -109,10 +109,10 @@ export default function PemilikApotekerPencarian() {
           <Table.Body>
             {filteredObatList.map((obat) => (
               <Table.Row key={obat.id}>
-                <Table.Cell>{obat.id}</Table.Cell>
-                <Table.Cell>{obat.nama_obat}</Table.Cell>
-                <Table.Cell>{obat.jumlah}</Table.Cell>
-                <Table.Cell>Rp. {obat.harga}</Table.Cell>
+                <Table.Cell className="text-black">{obat.jenis}</Table.Cell>
+                <Table.Cell className="text-black">{obat.nama_obat}</Table.Cell>
+                <Table.Cell className="text-black">{obat.jumlah}</Table.Cell>
+                <Table.Cell className="text-black">Rp. {obat.harga}</Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>

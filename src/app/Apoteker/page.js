@@ -13,6 +13,7 @@ import {
 } from "react-icons/ai";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Alert } from "flowbite-react";
 
 export default function Apoteker() {
   const router = useRouter();
@@ -40,17 +41,17 @@ export default function Apoteker() {
   // Menu
   const menuItems = [
     {
-      icon: <AiOutlineMedicineBox size="2em" />,
+      icon: <AiOutlineMedicineBox size="2em" color="green" />,
       label: "Obat",
       link: "Apoteker/Obat",
     },
     {
-      icon: <AiOutlineTransaction size="2em" />,
+      icon: <AiOutlineTransaction size="2em" color="pink" />,
       label: "Transaksi",
       link: "Apoteker/Transaksi",
     },
     {
-      icon: <AiOutlineSearch size="2em" />,
+      icon: <AiOutlineSearch size="2em" color="gray" />,
       label: "Pencarian",
       link: "/Apoteker/Pencarian",
     },
@@ -73,7 +74,7 @@ export default function Apoteker() {
   };
 
   return (
-    <div className="h-screen bg-[#f0f0f0] relative">
+    <div className="h-screen bg-[#ffcccc] relative">
       {/* Navbar */}
       <Navbar fluid rounded>
         <Navbar.Brand href="https://flowbite-react.com">
@@ -114,6 +115,13 @@ export default function Apoteker() {
       </Breadcrumb>
       {/* Breadcrumb end */}
 
+      {/* info  */}
+      <Alert className="mt-4" color="info">
+        <span className="font-medium">Info Update!</span> List Obat Sudah Ada
+        Filter Sesuai Jenis Obat
+      </Alert>
+      {/* info  end */}
+
       {/* Box profile */}
       <div className="mt-4 p-4">
         <div className="bg-white p-6 rounded-lg shadow-md text-center">
@@ -138,7 +146,7 @@ export default function Apoteker() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
         {menuItems.map((menuItem, index) => (
           <Link href={menuItem.link} key={index}>
-            <div className="bg-white p-6 rounded-lg shadow-md text-center cursor-pointer">
+            <div className="bg-white bg-opacity-50 backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer text-black">
               <div className="flex flex-col items-center">
                 {menuItem.icon}
                 <p className="mt-2">{menuItem.label}</p>

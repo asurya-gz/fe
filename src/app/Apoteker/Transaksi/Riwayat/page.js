@@ -233,7 +233,7 @@ export default function ApotekerTransaksiRiwayat() {
   );
 
   return (
-    <div className="bg-[#f0f0f0] h-screen">
+    <div className="bg-[#ffcccc] min-h-screen">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
         <Breadcrumb.Item href="/Apoteker" icon={HiHome}>
@@ -291,10 +291,16 @@ export default function ApotekerTransaksiRiwayat() {
           <Table.Body>
             {filteredTransaksiData.map((transaksi) => (
               <Table.Row key={transaksi.id}>
-                <Table.Cell>{transaksi.id}</Table.Cell>
-                <Table.Cell>{transaksi.tanggal}</Table.Cell>
-                <Table.Cell>{transaksi.nama_pembeli}</Table.Cell>
-                <Table.Cell>Rp. {transaksi.total_harga}</Table.Cell>
+                <Table.Cell className="text-black">{transaksi.id}</Table.Cell>
+                <Table.Cell className="text-black">
+                  {transaksi.tanggal}
+                </Table.Cell>
+                <Table.Cell className="text-black">
+                  {transaksi.nama_pembeli}
+                </Table.Cell>
+                <Table.Cell className="text-black">
+                  Rp. {transaksi.total_harga}
+                </Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>

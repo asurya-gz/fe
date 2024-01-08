@@ -58,7 +58,7 @@ export default function ApotekerPencarian() {
     fetchUser();
   }, [router]);
   return (
-    <div className="bg-[#f0f0f0] h-screen">
+    <div className="bg-[#ffcccc] min-h-screen">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
         <Breadcrumb.Item href="/Apoteker" icon={HiHome}>
@@ -106,10 +106,10 @@ export default function ApotekerPencarian() {
           <Table.Body>
             {filteredObatList.map((obat) => (
               <Table.Row key={obat.id}>
-                <Table.Cell>{obat.nama_obat}</Table.Cell>
-                <Table.Cell>{obat.jenis}</Table.Cell>
-                <Table.Cell>{obat.jumlah}</Table.Cell>
-                <Table.Cell>Rp. {obat.harga}</Table.Cell>
+                <Table.Cell className="text-black">{obat.nama_obat}</Table.Cell>
+                <Table.Cell className="text-black">{obat.jenis}</Table.Cell>
+                <Table.Cell className="text-black">{obat.jumlah}</Table.Cell>
+                <Table.Cell className="text-black">Rp. {obat.harga}</Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>

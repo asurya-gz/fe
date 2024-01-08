@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { Table } from "flowbite-react";
 import { Button } from "flowbite-react";
+import { FiPrinter } from "react-icons/fi";
 
 export default function PemilikApotekerRiwayat() {
   const router = useRouter();
@@ -233,7 +234,7 @@ export default function PemilikApotekerRiwayat() {
   );
 
   return (
-    <div className="bg-[#f0f0f0] h-screen">
+    <div className="bg-[#ffcccc] min-h-screen">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
         <Breadcrumb.Item href="/Pemilik" icon={HiHome}>
@@ -265,7 +266,8 @@ export default function PemilikApotekerRiwayat() {
         pill
         onClick={handlePrintRiwayat}
       >
-        Cetak Riwayat Transaksi
+        <FiPrinter size="1.5em" style={{ marginRight: "0.5em" }} />
+        Cetak
       </Button>
 
       {/* Cetak rekap Obat end */}
@@ -291,10 +293,16 @@ export default function PemilikApotekerRiwayat() {
           <Table.Body>
             {filteredTransaksiData.map((transaksi) => (
               <Table.Row key={transaksi.id}>
-                <Table.Cell>{transaksi.id}</Table.Cell>
-                <Table.Cell>{transaksi.tanggal}</Table.Cell>
-                <Table.Cell>{transaksi.nama_pembeli}</Table.Cell>
-                <Table.Cell>Rp. {transaksi.total_harga}</Table.Cell>
+                <Table.Cell className="text-black">{transaksi.id}</Table.Cell>
+                <Table.Cell className="text-black">
+                  {transaksi.tanggal}
+                </Table.Cell>
+                <Table.Cell className="text-black">
+                  {transaksi.nama_pembeli}
+                </Table.Cell>
+                <Table.Cell className="text-black">
+                  Rp. {transaksi.total_harga}
+                </Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>

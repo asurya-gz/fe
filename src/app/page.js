@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Button, Card, Label, TextInput, Navbar } from "flowbite-react";
 import { HiInformationCircle } from "react-icons/hi";
 import { Alert } from "flowbite-react";
+import { AiOutlineLogin } from "react-icons/ai";
 
 export default function MyPage() {
   const [username, setUsername] = useState("");
@@ -56,7 +57,7 @@ export default function MyPage() {
   };
 
   return (
-    <div className="bg-[#f0f0f0] h-screen">
+    <div className="bg-[#ffcccc] h-screen">
       {/* Navbar */}
       <Navbar fluid rounded>
         <Navbar.Brand href="https://flowbite-react.com">
@@ -71,22 +72,31 @@ export default function MyPage() {
         </Navbar.Brand>
       </Navbar>
       {/* Navbar end*/}
-
       {/* Selamat Datang */}
-      <div className="bg-[#f0f0f0] p-8 mx-auto mt-4 w-full text-center rounded-md">
-        <h1 className="text-2xl font-semibold mb-4">
-          Selamat datang di Sistem Manajemen Klinik Kartika
-        </h1>
+      <div className="p-8 mx-auto mt-4 w-full text-center rounded-md">
+        <img
+          src="logo.png" // Replace with the path to your logo image
+          alt="Klinik Kartika Logo"
+          className="mx-auto mb-4"
+          style={{ maxWidth: "150px" }} // Adjust the max width according to your needs
+        />
+        <h1 className="text-2xl font-semibold mb-4">KLINIK KARTIKA</h1>
         <p className="text-gray-600">
-          Silahkan login untuk melanjutkan. Gunakan username dan password Anda
-          untuk masuk ke akun.
+          Sistem Manajemen klinik Kartika. Silahkan Login Untuk Melanjutkan
         </p>
       </div>
       {/* Selamat Datang end*/}
 
       {/* Form Input Login */}
       <div className="flex items-center justify-center mt-[5%]">
-        <Card style={{ width: "400px" }}>
+        <Card
+          style={{
+            width: "400px",
+            background: "none",
+            boxShadow: "none",
+            border: "none",
+          }}
+        >
           <form className="flex flex-col gap-4" onSubmit={handleLogin}>
             <div>
               <div className="mb-2 block">
@@ -115,9 +125,10 @@ export default function MyPage() {
             </div>
             <Button
               type="submit"
-              className="bg-green-500 hover:bg-green-600 text-white"
+              className="bg-pink-500 hover:bg-pink-600 text-white"
             >
-              Login
+              <AiOutlineLogin size="1.5em" style={{ marginRight: "0.5em" }} />
+              Masuk
             </Button>
           </form>
           {showAlert && (

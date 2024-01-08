@@ -6,11 +6,30 @@ import { Button } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { FiPrinter } from "react-icons/fi";
 
-export default function PemilikApotekerList() {
+export default function ApotekerObatList() {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [obatList, setObatList] = useState([]);
+  const [filter, setFilter] = useState("ALL");
+
+  useEffect(() => {
+    // Fetch the list of drugs based on the selected filter
+    const fetchObatList = async () => {
+      try {
+        const response = await axios.get(
+          `https://bekk.up.railway.app/obat?jenis=${filter}`
+        );
+        console.log("Obat list:", response.data.obat);
+        setObatList(response.data.obat);
+      } catch (error) {
+        console.error("Error fetching obat list:", error.message);
+      }
+    };
+
+    fetchObatList();
+  }, [filter]); // Update the data when the filter changes
 
   // Print
   const handlePrint = async () => {
@@ -144,7 +163,7 @@ export default function PemilikApotekerList() {
   // Fetch Data Obat end
 
   return (
-    <div className="h-screen bg-[#f0f0f0]">
+    <div className="h-screen bg-[#ffcccc]">
       {" "}
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
@@ -157,9 +176,25 @@ export default function PemilikApotekerList() {
       {/* Breadcrumb end */}
       {/* Button Cetak List Obat */}
       <Button className="mt-8 ml-4" color="light" pill onClick={handlePrint}>
-        Cetak List Obat
+        <FiPrinter size="1.5em" style={{ marginRight: "0.5em" }} />
+        Cetak
       </Button>
       {/* Button Cetak List Obat End*/}
+      {/* Dropdown Filter */}
+      <div className="mt-4 ml-4">
+        <label htmlFor="jenisFilter" className="mr-2">
+          Filter:
+        </label>
+        <select
+          id="jenisFilter"
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+        >
+          <option value="INJEKSI">Injeksi</option>
+          <option value="OBAT">Obat</option>
+        </select>
+      </div>
+      {/* Dropdown Filter End */}
       {/* Table */}
       <div className="overflow-x-auto mt-8">
         <Table hoverable>
@@ -170,12 +205,16 @@ export default function PemilikApotekerList() {
             <Table.HeadCell style={{ background: "#333", color: "white" }}>
               Harga
             </Table.HeadCell>
+            <Table.HeadCell style={{ background: "#333", color: "white" }}>
+              Jenis
+            </Table.HeadCell>
           </Table.Head>
           <Table.Body>
             {obatList.map((obat) => (
               <Table.Row key={obat.id}>
-                <Table.Cell>{obat.nama_obat}</Table.Cell>
-                <Table.Cell>Rp. {obat.harga}</Table.Cell>
+                <Table.Cell className="text-black">{obat.nama_obat}</Table.Cell>
+                <Table.Cell className="text-black">Rp. {obat.harga}</Table.Cell>
+                <Table.Cell className="text-black">{obat.jenis}</Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>
