@@ -74,7 +74,7 @@ export default function Apoteker() {
   };
 
   return (
-    <div className="h-screen bg-[#ffcccc] relative">
+    <div className="min-h-screen bg-[#ffcccc] relative">
       {/* Navbar */}
       <Navbar fluid rounded>
         <Navbar.Brand href="https://flowbite-react.com">

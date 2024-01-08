@@ -58,7 +58,7 @@ export default function PemilikApotekerPencarian() {
     fetchUser();
   }, [router]);
   return (
-    <div className="bg-[#ffcccc] h-screen">
+    <div className="bg-[#ffcccc] min-h-screen">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
         <Breadcrumb.Item href="/Pemilik" icon={HiHome}>

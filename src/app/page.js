@@ -57,7 +57,7 @@ export default function MyPage() {
   };
 
   return (
-    <div className="bg-[#ffcccc] h-screen">
+    <div className="bg-[#ffcccc] min-h-screen">
       {/* Navbar */}
       <Navbar fluid rounded>
         <Navbar.Brand href="https://flowbite-react.com">
