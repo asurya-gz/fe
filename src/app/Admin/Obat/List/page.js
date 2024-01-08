@@ -7,28 +7,10 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
-export default function ApotekerObatList() {
+export default function AdminObatList() {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [obatList, setObatList] = useState([]);
-  const [filter, setFilter] = useState("ALL");
-
-  useEffect(() => {
-    // Fetch the list of drugs based on the selected filter
-    const fetchObatList = async () => {
-      try {
-        const response = await axios.get(
-          `https://bekk.up.railway.app/obat?jenis=${filter}`
-        );
-        console.log("Obat list:", response.data.obat);
-        setObatList(response.data.obat);
-      } catch (error) {
-        console.error("Error fetching obat list:", error.message);
-      }
-    };
-
-    fetchObatList();
-  }, [filter]); // Update the data when the filter changes
 
   // Print
   const handlePrint = async () => {
@@ -166,10 +148,10 @@ export default function ApotekerObatList() {
       {" "}
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
-        <Breadcrumb.Item href="/Apoteker" icon={HiHome}>
+        <Breadcrumb.Item href="/Admin" icon={HiHome}>
           Dashboard
         </Breadcrumb.Item>
-        <Breadcrumb.Item href="/Apoteker/Obat">Obat</Breadcrumb.Item>
+        <Breadcrumb.Item href="/Admin/Obat">Obat</Breadcrumb.Item>
         <Breadcrumb.Item href="#">List</Breadcrumb.Item>
       </Breadcrumb>
       {/* Breadcrumb end */}
@@ -178,21 +160,6 @@ export default function ApotekerObatList() {
         Cetak List Obat
       </Button>
       {/* Button Cetak List Obat End*/}
-      {/* Dropdown Filter */}
-      <div className="mt-4 ml-4">
-        <label htmlFor="jenisFilter" className="mr-2">
-          Filter:
-        </label>
-        <select
-          id="jenisFilter"
-          value={filter}
-          onChange={(e) => setFilter(e.target.value)}
-        >
-          <option value="INJEKSI">Injeksi</option>
-          <option value="OBAT">Obat</option>
-        </select>
-      </div>
-      {/* Dropdown Filter End */}
       {/* Table */}
       <div className="overflow-x-auto mt-8">
         <Table hoverable>

@@ -5,14 +5,9 @@ import axios from "axios";
 import { Breadcrumb } from "flowbite-react";
 import { HiHome } from "react-icons/hi";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
-import {
-  AiOutlineMedicineBox,
-  AiOutlineTransaction,
-  AiOutlineAppstore,
-  AiOutlineSearch,
-} from "react-icons/ai";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { FaCapsules } from "react-icons/fa";
 
 export default function Admin() {
   const router = useRouter();
@@ -38,24 +33,9 @@ export default function Admin() {
 
   const menuItems = [
     {
-      icon: <AiOutlineMedicineBox size="2em" />,
-      label: "Menu",
-      link: "Apoteker/Obat",
-    },
-    {
-      icon: <AiOutlineTransaction size="2em" />,
-      label: "Menu",
-      link: "Apoteker/Transaksi",
-    },
-    {
-      icon: <AiOutlineAppstore size="2em" />,
-      label: "Menu",
-      link: "Apoteker/Manajemen",
-    },
-    {
-      icon: <AiOutlineSearch size="2em" />,
-      label: "Menu",
-      link: "/Apoteker/Pencarian",
+      icon: <FaCapsules size="2em" />,
+      label: "Obat",
+      link: "Admin/Obat",
     },
   ];
 

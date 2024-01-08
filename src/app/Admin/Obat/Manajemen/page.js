@@ -11,7 +11,7 @@ import { BsPencil, BsTrash } from "react-icons/bs";
 // Import end
 
 // Utama
-export default function ApotekerManajemen() {
+export default function AdminManajemen() {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [obatList, setObatList] = useState([]);
@@ -153,9 +153,10 @@ export default function ApotekerManajemen() {
       {" "}
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
-        <Breadcrumb.Item href="/Apoteker" icon={HiHome}>
+        <Breadcrumb.Item href="/Admin" icon={HiHome}>
           Dashboard
         </Breadcrumb.Item>
+        <Breadcrumb.Item href="/Admin/Obat">Obat</Breadcrumb.Item>
         <Breadcrumb.Item href="#">Manajemen</Breadcrumb.Item>
       </Breadcrumb>
       {/* Breadcrumb end */}
