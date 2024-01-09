@@ -7,7 +7,7 @@ import { HiHome } from "react-icons/hi";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FaCapsules } from "react-icons/fa";
+import { FaCapsules, FaUser } from "react-icons/fa";
 
 export default function Admin() {
   const router = useRouter();
@@ -33,9 +33,14 @@ export default function Admin() {
 
   const menuItems = [
     {
-      icon: <FaCapsules size="2em" />,
+      icon: <FaCapsules size="2em" color="green" />,
       label: "Obat",
       link: "Admin/Obat",
+    },
+    {
+      icon: <FaUser size="2em" color="purple" />,
+      label: "Akun",
+      link: "Admin/Akun",
     },
   ];
 
@@ -54,7 +59,7 @@ export default function Admin() {
     }
   };
   return (
-    <div className="h-screen bg-[#f0f0f0] relative">
+    <div className="min-h-screen bg-[#ffcccc] relative">
       {/* Navbar */}
       <Navbar fluid rounded>
         <Navbar.Brand href="https://flowbite-react.com">
@@ -119,7 +124,7 @@ export default function Admin() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
         {menuItems.map((menuItem, index) => (
           <Link href={menuItem.link} key={index}>
-            <div className="bg-white p-6 rounded-lg shadow-md text-center cursor-pointer">
+            <div className="bg-white bg-opacity-50 backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer">
               <div className="flex flex-col items-center">
                 {menuItem.icon}
                 <p className="mt-2">{menuItem.label}</p>

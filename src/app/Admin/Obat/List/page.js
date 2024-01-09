@@ -144,7 +144,7 @@ export default function AdminObatList() {
   // Fetch Data Obat end
 
   return (
-    <div className="h-screen bg-[#f0f0f0]">
+    <div className="min-h-screen bg-[#ffcccc]">
       {" "}
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
@@ -177,9 +177,9 @@ export default function AdminObatList() {
           <Table.Body>
             {obatList.map((obat) => (
               <Table.Row key={obat.id}>
-                <Table.Cell>{obat.nama_obat}</Table.Cell>
-                <Table.Cell>Rp. {obat.harga}</Table.Cell>
-                <Table.Cell>{obat.jenis}</Table.Cell>
+                <Table.Cell className="text-black">{obat.nama_obat}</Table.Cell>
+                <Table.Cell className="text-black">Rp. {obat.harga}</Table.Cell>
+                <Table.Cell className="text-black">{obat.jenis}</Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>

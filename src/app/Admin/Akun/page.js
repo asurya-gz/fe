@@ -1,17 +1,15 @@
 "use client";
-// Import
 import { Breadcrumb } from "flowbite-react";
 import { HiHome } from "react-icons/hi";
-import { FaListUl } from "react-icons/fa";
-import { MdSummarize } from "react-icons/md";
+import { FaUserDoctor, FaUserNurse } from "react-icons/fa6";
+import { GrUserManager, GrUserAdmin } from "react-icons/gr";
+import { LiaUserNurseSolid } from "react-icons/lia";
 import Link from "next/link";
-import { GiBuyCard } from "react-icons/gi";
-import { BsClockHistory } from "react-icons/bs";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
-export default function AdminObatTransaksi() {
+export default function AdminAkun() {
   const router = useRouter();
   const [user, setUser] = useState(null);
 
@@ -38,25 +36,39 @@ export default function AdminObatTransaksi() {
   // Menu
   const menuItems = [
     {
-      icon: <GiBuyCard size="2em" color="green" />,
-      label: "Pembelian",
-      link: "/Admin/Obat/Transaksi/Pembelian",
+      icon: <FaUserNurse size="2em" color="gray" />, // Corrected icon usage
+      label: "Apoteker",
+      link: "/Admin/Obat/Apoteker",
     },
     {
-      icon: <BsClockHistory size="2em" color="purple" />,
-      label: "Riwayat",
-      link: "/Admin/Obat/Transaksi/Riwayat",
+      icon: <LiaUserNurseSolid size="2em" color="red" />, // Corrected nurse icon usage
+      label: "Perawat",
+      link: "/Admin/Akun/Perawat",
+    },
+    {
+      icon: <GrUserAdmin size="2em" color="brown" />,
+      label: "Admin",
+      link: "/Admin/Akun/Admin",
+    },
+    {
+      icon: <GrUserManager size="2em" color="blue" />,
+      label: "Pemilik",
+      link: "/Admin/Akun/Pemilik",
+    },
+    {
+      icon: <FaUserDoctor size="2em" color="green" />,
+      label: "Dokter",
+      link: "/Admin/Akun/Dokter",
     },
   ];
   return (
     <div className="bg-[#ffcccc] min-h-screen">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
-        <Breadcrumb.Item href="/Admin" icon={HiHome}>
+        <Breadcrumb.Item href="../Admin" icon={HiHome}>
           Dashboard
         </Breadcrumb.Item>
-        <Breadcrumb.Item href="/Admin/Obat">Obat</Breadcrumb.Item>
-        <Breadcrumb.Item href="#">Transaksi</Breadcrumb.Item>
+        <Breadcrumb.Item href="#">Akun</Breadcrumb.Item>
       </Breadcrumb>
       {/* Breadcrumb end */}
 

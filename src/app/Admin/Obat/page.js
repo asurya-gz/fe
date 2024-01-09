@@ -35,33 +35,33 @@ export default function AdminObat() {
   // Menu
   const menuItems = [
     {
-      icon: <FaListUl size="2em" />,
+      icon: <FaListUl size="2em" color="gray" />,
       label: "List Obat",
       link: "/Admin/Obat/List",
     },
     {
-      icon: <MdSummarize size="2em" />,
+      icon: <MdSummarize size="2em" color="red" />,
       label: "Rekap Obat",
       link: "/Admin/Obat/Rekap",
     },
     {
-      icon: <FaSearch size="2em" />,
+      icon: <FaSearch size="2em" color="brown" />,
       label: "Pencarian Obat",
       link: "/Admin/Obat/Pencarian",
     },
     {
-      icon: <FaCog size="2em" />,
+      icon: <FaCog size="2em" color="blue" />,
       label: "Manajemen Obat",
       link: "/Admin/Obat/Manajemen",
     },
     {
-      icon: <FaMoneyBill size="2em" />,
+      icon: <FaMoneyBill size="2em" color="green" />,
       label: "Transaksi Obat",
       link: "/Admin/Obat/Transaksi",
     },
   ];
   return (
-    <div className="bg-[#f0f0f0] h-screen">
+    <div className="bg-[#ffcccc] min-h-screen">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
         <Breadcrumb.Item href="../Admin" icon={HiHome}>
@@ -75,7 +75,7 @@ export default function AdminObat() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 ml-4">
         {menuItems.map((menuItem, index) => (
           <Link href={menuItem.link} key={index}>
-            <div className="bg-white p-6 rounded-lg shadow-md text-center cursor-pointer">
+            <div className="bg-white bg-opacity-50 backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer">
               <div className="flex flex-col items-center">
                 {menuItem.icon}
                 <p className="mt-2">{menuItem.label}</p>

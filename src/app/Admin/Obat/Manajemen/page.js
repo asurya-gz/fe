@@ -149,7 +149,7 @@ export default function AdminManajemen() {
   };
 
   return (
-    <div className="bg-[#f0f0f0] min-h-screen">
+    <div className="bg-[#ffcccc] min-h-screen">
       {" "}
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
@@ -185,9 +185,9 @@ export default function AdminManajemen() {
           <Table.Body>
             {obatList.map((obat) => (
               <Table.Row key={obat.id}>
-                <Table.Cell>{obat.nama_obat}</Table.Cell>
-                <Table.Cell>{obat.jumlah}</Table.Cell>
-                <Table.Cell>Rp. {obat.harga}</Table.Cell>
+                <Table.Cell className="text-black">{obat.nama_obat}</Table.Cell>
+                <Table.Cell className="text-black">{obat.jumlah}</Table.Cell>
+                <Table.Cell className="text-black">Rp. {obat.harga}</Table.Cell>
                 <Table.Cell className="flex items-center">
                   {/* Edit icon */}
                   <BsPencil

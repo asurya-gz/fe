@@ -185,10 +185,10 @@ export default function AdminObatRekap() {
   // Print end
 
   return (
-    <div className="h-screen">
+    <div className="bg-[#ffcccc] min-h-screen">
       {" "}
       {/* Breadcrumb */}
-      <Breadcrumb className="mt-4 ml-4" aria-label="Default breadcrumb example">
+      <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
         <Breadcrumb.Item href="/Admin" icon={HiHome}>
           Dashboard
         </Breadcrumb.Item>
@@ -242,10 +242,14 @@ export default function AdminObatRekap() {
               })
               .map((obat) => (
                 <Table.Row key={obat.id}>
-                  <Table.Cell>{obat.nama_obat}</Table.Cell>
-                  <Table.Cell>{obat.jenis}</Table.Cell>
-                  <Table.Cell>{obat.jumlah}</Table.Cell>
-                  <Table.Cell>{handleSaranPembelian(obat.jumlah)}</Table.Cell>
+                  <Table.Cell className="text-black">
+                    {obat.nama_obat}
+                  </Table.Cell>
+                  <Table.Cell className="text-black">{obat.jenis}</Table.Cell>
+                  <Table.Cell className="text-black">{obat.jumlah}</Table.Cell>
+                  <Table.Cell className="text-black">
+                    {handleSaranPembelian(obat.jumlah)}
+                  </Table.Cell>
                 </Table.Row>
               ))}
           </Table.Body>

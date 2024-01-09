@@ -233,7 +233,7 @@ export default function AdminObatTransaksiRiwayat() {
   );
 
   return (
-    <div className="bg-[#f0f0f0] h-screen">
+    <div className="bg-[#ffcccc] min-h-screen">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
         <Breadcrumb.Item href="/Admin" icon={HiHome}>

@@ -163,7 +163,7 @@ export default function ApotekerObatList() {
   // Fetch Data Obat end
 
   return (
-    <div className="h-screen bg-[#ffcccc]">
+    <div className="min-h-screen bg-[#ffcccc]">
       {" "}
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
