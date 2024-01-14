@@ -59,7 +59,7 @@ export default function Pemilik() {
     <div className="h-screen bg-[#ffcccc] relative">
       {/* Navbar */}
       <Navbar fluid rounded>
-        <Navbar.Brand href="https://flowbite-react.com">
+        <Navbar.Brand href="#">
           <img
             src="/logo.png"
             className="mr-3 h-6 sm:h-9"
@@ -80,8 +80,8 @@ export default function Pemilik() {
                 {user ? user.username : "Loading..."}
               </span>
             </Dropdown.Header>
-            <Dropdown.Item>Dashboard</Dropdown.Item>
-            <Dropdown.Item>Profile</Dropdown.Item>
+            <Dropdown.Item href="#">Dashboard</Dropdown.Item>
+            <Dropdown.Item href="/Pemilik/Profile">Profile</Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
           </Dropdown>

@@ -38,22 +38,22 @@ export default function Perawat() {
 
   const menuItems = [
     {
-      icon: <AiOutlineMedicineBox size="2em" />,
+      icon: <AiOutlineMedicineBox size="2em" color="gray" />,
       label: "Menu",
       link: "Apoteker/Obat",
     },
     {
-      icon: <AiOutlineTransaction size="2em" />,
+      icon: <AiOutlineTransaction size="2em" color="blue" />,
       label: "Menu",
       link: "Apoteker/Transaksi",
     },
     {
-      icon: <AiOutlineAppstore size="2em" />,
+      icon: <AiOutlineAppstore size="2em" color="purple" />,
       label: "Menu",
       link: "Apoteker/Manajemen",
     },
     {
-      icon: <AiOutlineSearch size="2em" />,
+      icon: <AiOutlineSearch size="2em" color="green" />,
       label: "Menu",
       link: "/Apoteker/Pencarian",
     },
@@ -75,10 +75,10 @@ export default function Perawat() {
   };
 
   return (
-    <div className="h-screen bg-[#f0f0f0] relative">
+    <div className="min-h-screen bg-[#ffcccc] relative">
       {/* Navbar */}
       <Navbar fluid rounded>
-        <Navbar.Brand href="https://flowbite-react.com">
+        <Navbar.Brand href="#">
           <img
             src="/logo.png"
             className="mr-3 h-6 sm:h-9"
@@ -99,8 +99,8 @@ export default function Perawat() {
                 {user ? user.username : "Loading..."}
               </span>
             </Dropdown.Header>
-            <Dropdown.Item>Dashboard</Dropdown.Item>
-            <Dropdown.Item>Profile</Dropdown.Item>
+            <Dropdown.Item href="#">Dashboard</Dropdown.Item>
+            <Dropdown.Item href="/Perawat/Profile">Profile</Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
           </Dropdown>
@@ -140,7 +140,7 @@ export default function Perawat() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
         {menuItems.map((menuItem, index) => (
           <Link href={menuItem.link} key={index}>
-            <div className="bg-white p-6 rounded-lg shadow-md text-center cursor-pointer">
+            <div className="bg-white bg-opacity-50 backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer">
               <div className="flex flex-col items-center">
                 {menuItem.icon}
                 <p className="mt-2">{menuItem.label}</p>

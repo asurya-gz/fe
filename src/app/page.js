@@ -60,7 +60,7 @@ export default function MyPage() {
     <div className="bg-[#ffcccc] min-h-screen">
       {/* Navbar */}
       <Navbar fluid rounded>
-        <Navbar.Brand href="https://flowbite-react.com">
+        <Navbar.Brand href="#">
           <img
             src="/logo.png"
             className="mr-3 h-6 sm:h-9"
