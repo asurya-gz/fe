@@ -64,7 +64,7 @@ export default function AdminObat() {
     <div className="bg-[#ffcccc] min-h-screen">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
-        <Breadcrumb.Item href="../Admin" icon={HiHome}>
+        <Breadcrumb.Item href="/Admin" icon={HiHome}>
           Dashboard
         </Breadcrumb.Item>
         <Breadcrumb.Item href="#">Obat</Breadcrumb.Item>

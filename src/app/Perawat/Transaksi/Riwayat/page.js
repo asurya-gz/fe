@@ -8,7 +8,7 @@ import { Table } from "flowbite-react";
 import { Button } from "flowbite-react";
 import Link from "next/link";
 
-export default function AdminObatTransaksiRiwayat() {
+export default function PemilikTransaksiRiwayat() {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [transaksiData, setTransaksiData] = useState([]);
@@ -249,13 +249,10 @@ export default function AdminObatTransaksiRiwayat() {
     <div className="bg-[#ffcccc] min-h-screen">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
-        <Breadcrumb.Item href="/Admin" icon={HiHome}>
+        <Breadcrumb.Item href="/Perawat" icon={HiHome}>
           Dashboard
         </Breadcrumb.Item>
-        <Breadcrumb.Item href="/Admin/Obat">Obat</Breadcrumb.Item>
-        <Breadcrumb.Item href="/Admin/Obat/Transaksi">
-          Transaksi
-        </Breadcrumb.Item>
+        <Breadcrumb.Item href="/Perawat/Transaksi">Transaksi</Breadcrumb.Item>
         <Breadcrumb.Item href="#">Riwayat</Breadcrumb.Item>
       </Breadcrumb>
       {/* Breadcrumb end */}
@@ -296,7 +293,7 @@ export default function AdminObatTransaksiRiwayat() {
         Cetak Riwayat Transaksi
       </Button>
 
-      <Link href="/Admin/Obat/Transaksi/Riwayat/DetailTransaksi">
+      <Link href="/Perawat/Transaksi/Riwayat/DetailTransaksi">
         <Button className="mt-4 ml-4" color="blue" pill>
           Detail Riwayat Transaksi
         </Button>

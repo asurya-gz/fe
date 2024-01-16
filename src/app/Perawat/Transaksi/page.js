@@ -11,7 +11,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
-export default function AdminObatTransasi() {
+export default function PemilikTransaksiRiwayat() {
   const router = useRouter();
   const [user, setUser] = useState(null);
 
@@ -40,22 +40,21 @@ export default function AdminObatTransasi() {
     {
       icon: <GiBuyCard size="2em" color="green" />,
       label: "Pembelian",
-      link: "/Admin/Obat/Transaksi/Pembelian",
+      link: "/Perawat/Transaksi/Pembelian",
     },
     {
       icon: <BsClockHistory size="2em" color="pink" />,
       label: "Riwayat",
-      link: "/Admin/Obat/Transaksi/Riwayat",
+      link: "/Perawat/Transaksi/Riwayat",
     },
   ];
   return (
     <div className="bg-[#ffcccc] min-h-screen">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
-        <Breadcrumb.Item href="/Admin" icon={HiHome}>
+        <Breadcrumb.Item href="/Perawat" icon={HiHome}>
           Dashboard
         </Breadcrumb.Item>
-        <Breadcrumb.Item href="/Admin/Obat">Obat</Breadcrumb.Item>
         <Breadcrumb.Item href="#">Transaksi</Breadcrumb.Item>
       </Breadcrumb>
       {/* Breadcrumb end */}

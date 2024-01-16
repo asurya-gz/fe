@@ -7,7 +7,7 @@ import axios from "axios";
 import Select from "react-select";
 import { AiOutlinePlusCircle, AiOutlineShoppingCart } from "react-icons/ai";
 
-export default function AdminObatTransaksiPembelian() {
+export default function PemilikTransaksiPembelian() {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [obatList, setObatList] = useState([]);
@@ -154,14 +154,11 @@ export default function AdminObatTransaksiPembelian() {
     <div className="bg-[#ffcccc] min-h-screen">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
-        <Breadcrumb.Item href="/Admin" icon={HiHome}>
+        <Breadcrumb.Item href="/Perawat" icon={HiHome}>
           Dashboard
         </Breadcrumb.Item>
-        <Breadcrumb.Item href="/Admin/Obat">Obat</Breadcrumb.Item>
-        <Breadcrumb.Item href="/Admin/Obat/Transaksi">
-          Transaksi
-        </Breadcrumb.Item>
-        <Breadcrumb.Item href="/Admin/Obat/Transaksi/Pembelian">
+        <Breadcrumb.Item href="/Perawat/Transaksi">Transaksi</Breadcrumb.Item>
+        <Breadcrumb.Item href="/Perawat/Transaksi/Pembelian">
           Pembelian
         </Breadcrumb.Item>
       </Breadcrumb>

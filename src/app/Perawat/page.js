@@ -4,15 +4,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Breadcrumb } from "flowbite-react";
 import { HiHome } from "react-icons/hi";
-import { Avatar, Dropdown, Navbar } from "flowbite-react";
-import {
-  AiOutlineMedicineBox,
-  AiOutlineTransaction,
-  AiOutlineAppstore,
-  AiOutlineSearch,
-} from "react-icons/ai";
+import { Avatar, Dropdown, Navbar, Alert } from "flowbite-react";
+import { AiOutlineTransaction } from "react-icons/ai";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { GrDocumentUser } from "react-icons/gr";
 
 export default function Perawat() {
   const router = useRouter();
@@ -38,24 +34,14 @@ export default function Perawat() {
 
   const menuItems = [
     {
-      icon: <AiOutlineMedicineBox size="2em" color="gray" />,
-      label: "Menu",
-      link: "Apoteker/Obat",
-    },
-    {
       icon: <AiOutlineTransaction size="2em" color="blue" />,
-      label: "Menu",
-      link: "Apoteker/Transaksi",
+      label: "Transaksi",
+      link: "Perawat/Transaksi",
     },
     {
-      icon: <AiOutlineAppstore size="2em" color="purple" />,
-      label: "Menu",
-      link: "Apoteker/Manajemen",
-    },
-    {
-      icon: <AiOutlineSearch size="2em" color="green" />,
-      label: "Menu",
-      link: "/Apoteker/Pencarian",
+      icon: <GrDocumentUser size="2em" color="gray" />,
+      label: "SOAP",
+      link: "Perawat/Soap",
     },
   ];
 
@@ -115,6 +101,13 @@ export default function Perawat() {
         </Breadcrumb.Item>
       </Breadcrumb>
       {/* Breadcrumb end */}
+
+      {/* info  */}
+      <Alert className="mt-4" color="info">
+        <span className="font-medium">Info!</span> Menu SOAP Akan Segera
+        Tersedia !
+      </Alert>
+      {/* info  end */}
 
       {/* Box profile */}
       <div className="mt-4 p-4">

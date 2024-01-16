@@ -6,13 +6,18 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { Table } from "flowbite-react";
 import { Button } from "flowbite-react";
-import { FiPrinter } from "react-icons/fi";
+import Link from "next/link";
 
-export default function PemilikApotekerRiwayat() {
+export default function PemilikTransaksiRiwayat() {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [transaksiData, setTransaksiData] = useState([]);
   const [filterOption, setFilterOption] = useState("Semua");
+  const [searchInput, setSearchInput] = useState("");
+
+  const handleSearchChange = (value) => {
+    setSearchInput(value);
+  };
 
   useEffect(() => {
     const fetchTransaksiData = async () => {
@@ -72,7 +77,14 @@ export default function PemilikApotekerRiwayat() {
         transaksiDate.getFullYear() === today.getFullYear()
       );
     } else {
-      return true;
+      return (
+        transaksi.nama_pembeli
+          .toLowerCase()
+          .includes(searchInput.toLowerCase()) ||
+        transaksi.id.toString().includes(searchInput.toLowerCase()) ||
+        transaksi.tanggal.toLowerCase().includes(searchInput.toLowerCase()) ||
+        transaksi.total_harga.toString().includes(searchInput.toLowerCase())
+      );
     }
   });
 
@@ -258,6 +270,18 @@ export default function PemilikApotekerRiwayat() {
       </div>
       {/* Dropdown filter end */}
 
+      {/* Search input */}
+      <div className="mt-8 ml-4">
+        <input
+          type="text"
+          placeholder="Search by name"
+          value={searchInput}
+          onChange={(e) => handleSearchChange(e.target.value)}
+          className="bg-white p-1 rounded-xl outline-none"
+        />
+      </div>
+      {/* Search input end */}
+
       {/* Cetak */}
       {/* Cetak rekap Obat */}
       <Button
@@ -266,13 +290,17 @@ export default function PemilikApotekerRiwayat() {
         pill
         onClick={handlePrintRiwayat}
       >
-        <FiPrinter size="1.5em" style={{ marginRight: "0.5em" }} />
-        Cetak
+        Cetak Riwayat Transaksi
       </Button>
+
+      <Link href="/Pemilik/Apoteker/Riwayat/DetailTransaksi">
+        <Button className="mt-4 ml-4" color="blue" pill>
+          Detail Riwayat Transaksi
+        </Button>
+      </Link>
 
       {/* Cetak rekap Obat end */}
       {/* Cetak end */}
-
       {/* Table Riwayat */}
       <div className="overflow-x-auto mt-8">
         <Table hoverable>

@@ -7,7 +7,7 @@ import { HiHome } from "react-icons/hi";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FaUserNurse } from "react-icons/fa";
+import { FaUserNurse, FaUser } from "react-icons/fa";
 import { Alert } from "flowbite-react";
 
 export default function Pemilik() {
@@ -33,6 +33,11 @@ export default function Pemilik() {
   }, [router]);
 
   const menuItems = [
+    {
+      icon: <FaUser size="2em" color="purple" />,
+      label: "Akun",
+      link: "Pemilik/Akun",
+    },
     {
       icon: <FaUserNurse size="2em" color="green" />,
       label: "Apoteker",
@@ -88,7 +93,6 @@ export default function Pemilik() {
         </div>
       </Navbar>
       {/* Navbar end*/}
-
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
         <Breadcrumb.Item href="#" icon={HiHome}>
@@ -96,14 +100,12 @@ export default function Pemilik() {
         </Breadcrumb.Item>
       </Breadcrumb>
       {/* Breadcrumb end */}
-
       {/* info  */}
       <Alert className="mt-4" color="info">
-        <span className="font-medium">Info Update!</span> List Obat Sudah Ada
-        Filter Sesuai Jenis Obat
+        <span className="font-medium">Info!</span> Menu Akun Akan Segera
+        Tersedia !
       </Alert>
       {/* info  end */}
-
       {/* Box profile */}
       <div className="mt-4 p-4">
         <div className="bg-white p-6 rounded-lg shadow-md text-center">
@@ -123,7 +125,6 @@ export default function Pemilik() {
         </div>
       </div>
       {/* Box profile end */}
-
       {/* Box Menu */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
         {menuItems.map((menuItem, index) => (
