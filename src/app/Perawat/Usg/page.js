@@ -1,17 +1,21 @@
 "use client";
+// Import
 import { Breadcrumb } from "flowbite-react";
 import { HiHome } from "react-icons/hi";
+import { FaListUl } from "react-icons/fa";
+import { MdSummarize } from "react-icons/md";
+import Link from "next/link";
+import { GiBuyCard } from "react-icons/gi";
+import { BsClockHistory } from "react-icons/bs";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import Link from "next/link";
-import { FaUserCog, FaUserMd } from "react-icons/fa";
-import { FaUserNurse, FaHospitalUser } from "react-icons/fa6";
 
-export default function PemilikAkun() {
+export default function PerawatUsg() {
   const router = useRouter();
   const [user, setUser] = useState(null);
 
+  // Session
   useEffect(() => {
     // Fetch user details or check session status
     const fetchUser = async () => {
@@ -22,6 +26,7 @@ export default function PemilikAkun() {
         console.log("User data:", response.data);
         setUser(response.data.user);
       } catch (error) {
+        console.error("Error fetching user:", error.message);
         // Redirect to login page if not authenticated
         router.push("/");
       }
@@ -30,37 +35,29 @@ export default function PemilikAkun() {
     fetchUser();
   }, [router]);
 
+  // Menu
   const menuItems = [
     {
-      icon: <FaHospitalUser size="2em" color="blue" />,
-      label: "Apoteker",
-      link: "/Pemilik/Akun/Apoteker",
+      icon: <GiBuyCard size="2em" color="green" />,
+      label: "Formulir",
+      link: "/Perawat/Usg/Formulir",
     },
     {
-      icon: <FaUserCog size="2em" color="gray" />,
-      label: "Admin",
-      link: "/Pemilik/Akun/Admin",
-    },
-    {
-      icon: <FaUserNurse size="2em" color="green" />,
-      label: "Perawat",
-      link: "/Pemilik/Akun/Perawat",
-    },
-    {
-      icon: <FaUserMd size="2em" color="purple" />,
-      label: "Dokter",
-      link: "/Pemilik/Akun/Dokter",
+      icon: <BsClockHistory size="2em" color="pink" />,
+      label: "Riwayat",
+      link: "/Perawat/Usg/Riwayat",
     },
   ];
-
   return (
     <div className="bg-[#ffcccc] min-h-screen">
+      {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
-        <Breadcrumb.Item href="/Pemilik" icon={HiHome}>
+        <Breadcrumb.Item href="/Perawat" icon={HiHome}>
           Dashboard
         </Breadcrumb.Item>
-        <Breadcrumb.Item href="#">Akun</Breadcrumb.Item>
+        <Breadcrumb.Item href="#">USG</Breadcrumb.Item>
       </Breadcrumb>
+      {/* Breadcrumb end */}
 
       {/* Box Menu */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 ml-4">

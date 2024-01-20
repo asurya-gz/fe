@@ -9,23 +9,13 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { FiPrinter } from "react-icons/fi";
 
-export default function PerawatSoapRekamMedis() {
+export default function DokterRekamMedisDetail() {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [rekamMedisList, setRekamMedisList] = useState([]);
   const [selectedRecord, setSelectedRecord] = useState(null);
   const [tindakanPasienList, setTindakanPasienList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-
-  // Function to format date
-  const formatDate = (dateString) => {
-    const options = { day: "numeric", month: "long", year: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString(
-      "id-ID",
-      options
-    );
-    return formattedDate;
-  };
 
   // Filter rekamMedisList based on no_medrek
   const filteredRekamMedisList = rekamMedisList.filter((record) =>
@@ -110,9 +100,9 @@ export default function PerawatSoapRekamMedis() {
             <td>${selectedRecord.alamat_pasien}</td>
           </tr>
           <tr>
-          <th>Tanggal Lahir</th>
-          <td>${formatDate(selectedRecord.tanggal_lahir)}</td>
-        </tr>
+            <th>Tanggal Lahir</th>
+            <td>${selectedRecord.tanggal_lahir}</td>
+          </tr>
           <tr>
             <th>Subjective</th>
             <td>${selectedRecord.subjective}</td>
@@ -274,9 +264,9 @@ export default function PerawatSoapRekamMedis() {
             <td>${selectedRecord.alamat_pasien}</td>
           </tr>
           <tr>
-          <th>Tanggal Lahir</th>
-          <td>${formatDate(selectedRecord.tanggal_lahir)}</td>
-        </tr>
+            <th>Tanggal Lahir</th>
+            <td>${selectedRecord.tanggal_lahir}</td>
+          </tr>
 
         </table>
         <table>
@@ -390,11 +380,11 @@ export default function PerawatSoapRekamMedis() {
     <div className="bg-[#ffcccc] h-screen">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
-        <Breadcrumb.Item href="/Perawat" icon={HiHome}>
+        <Breadcrumb.Item href="/Dokter" icon={HiHome}>
           Dashboard
         </Breadcrumb.Item>
-        <Breadcrumb.Item href="/Perawat/Soap">Soap</Breadcrumb.Item>
-        <Breadcrumb.Item href="#">Rekam Medis</Breadcrumb.Item>
+        <Breadcrumb.Item href="/Dokter/RekamMedis">Rekam Medis</Breadcrumb.Item>
+        <Breadcrumb.Item href="#">Detail</Breadcrumb.Item>
       </Breadcrumb>
       {/* Breadcrumb end */}
 
@@ -456,9 +446,7 @@ export default function PerawatSoapRekamMedis() {
                 </tr>
                 <tr>
                   <td className="border p-2">Tanggal Lahir:</td>
-                  <td className="border p-2">
-                    {formatDate(selectedRecord.tanggal_lahir)}
-                  </td>
+                  <td className="border p-2">{selectedRecord.tanggal_lahir}</td>
                 </tr>
                 <tr>
                   <td className="border p-2">Subjective:</td>

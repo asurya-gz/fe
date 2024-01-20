@@ -8,7 +8,7 @@ import Link from "next/link";
 import { FaUserCog, FaUserMd } from "react-icons/fa";
 import { FaUserNurse, FaHospitalUser } from "react-icons/fa6";
 
-export default function PemilikAkun() {
+export default function AdminAkunAkunRole() {
   const router = useRouter();
   const [user, setUser] = useState(null);
 
@@ -34,32 +34,33 @@ export default function PemilikAkun() {
     {
       icon: <FaHospitalUser size="2em" color="blue" />,
       label: "Apoteker",
-      link: "/Pemilik/Akun/Apoteker",
+      link: "/Admin/Akun/AkunRole/Apoteker",
     },
     {
       icon: <FaUserCog size="2em" color="gray" />,
-      label: "Admin",
-      link: "/Pemilik/Akun/Admin",
+      label: "Pemilik",
+      link: "/Admin/Akun/AkunRole/Pemilik",
     },
     {
       icon: <FaUserNurse size="2em" color="green" />,
       label: "Perawat",
-      link: "/Pemilik/Akun/Perawat",
+      link: "/Admin/Akun/AkunRole/Perawat",
     },
     {
       icon: <FaUserMd size="2em" color="purple" />,
       label: "Dokter",
-      link: "/Pemilik/Akun/Dokter",
+      link: "/Admin/Akun/AkunRole/Dokter",
     },
   ];
 
   return (
     <div className="bg-[#ffcccc] min-h-screen">
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
-        <Breadcrumb.Item href="/Pemilik" icon={HiHome}>
+        <Breadcrumb.Item href="/Admin" icon={HiHome}>
           Dashboard
         </Breadcrumb.Item>
-        <Breadcrumb.Item href="#">Akun</Breadcrumb.Item>
+        <Breadcrumb.Item href="/Admin/Akun">Akun</Breadcrumb.Item>
+        <Breadcrumb.Item href="#">Role</Breadcrumb.Item>
       </Breadcrumb>
 
       {/* Box Menu */}

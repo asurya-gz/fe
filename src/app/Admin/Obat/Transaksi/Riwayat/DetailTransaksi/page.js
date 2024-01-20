@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Table, Button } from "flowbite-react";
 import { useRouter } from "next/navigation";
+import { FiPrinter } from "react-icons/fi";
 
 export default function AdminObatTransaksiRiwayatDetail() {
   const [user, setUser] = useState(null);
@@ -231,7 +232,8 @@ export default function AdminObatTransaksiRiwayatDetail() {
           pill
           className="mt-8 ml-4"
         >
-          Cetak Data
+          <FiPrinter size="1.5em" style={{ marginRight: "0.5em" }} />
+          Data
         </Button>
       </div>
       {/* Print button end */}

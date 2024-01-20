@@ -5,12 +5,7 @@ import axios from "axios";
 import { Breadcrumb } from "flowbite-react";
 import { HiHome } from "react-icons/hi";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
-import {
-  AiOutlineMedicineBox,
-  AiOutlineTransaction,
-  AiOutlineAppstore,
-  AiOutlineSearch,
-} from "react-icons/ai";
+import { FaFileMedicalAlt } from "react-icons/fa";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -38,24 +33,9 @@ export default function Dokter() {
 
   const menuItems = [
     {
-      icon: <AiOutlineMedicineBox size="2em" />,
-      label: "Menu",
-      link: "Apoteker/Obat",
-    },
-    {
-      icon: <AiOutlineTransaction size="2em" color="gray" />,
-      label: "Menu",
-      link: "Apoteker/Transaksi",
-    },
-    {
-      icon: <AiOutlineAppstore size="2em" color="green" />,
-      label: "Menu",
-      link: "Apoteker/Manajemen",
-    },
-    {
-      icon: <AiOutlineSearch size="2em" color="purple" />,
-      label: "Menu",
-      link: "/Apoteker/Pencarian",
+      icon: <FaFileMedicalAlt size="2em" color="blue" />,
+      label: "Rekam Medis",
+      link: "/Dokter/RekamMedis",
     },
   ];
 
@@ -140,7 +120,7 @@ export default function Dokter() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
         {menuItems.map((menuItem, index) => (
           <Link href={menuItem.link} key={index}>
-            <div className="bg-white bg-opacity-50 backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer">
+            <div className="bg-white backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer">
               <div className="flex flex-col items-center">
                 {menuItem.icon}
                 <p className="mt-2">{menuItem.label}</p>

@@ -63,7 +63,7 @@ export default function PemilikTransaksiRiwayat() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 ml-4">
         {menuItems.map((menuItem, index) => (
           <Link href={menuItem.link} key={index}>
-            <div className="bg-white bg-opacity-50 backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer text-black">
+            <div className="bg-white backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer text-black">
               <div className="flex flex-col items-center">
                 {menuItem.icon}
                 <p className="mt-2">{menuItem.label}</p>

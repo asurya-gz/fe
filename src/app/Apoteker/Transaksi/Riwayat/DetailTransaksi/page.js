@@ -4,6 +4,7 @@ import { HiHome } from "react-icons/hi";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Table, Button } from "flowbite-react";
+import { FiPrinter } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 
 export default function ApotekerTransaksiRiwayatDetailTransaksi() {
@@ -228,7 +229,8 @@ export default function ApotekerTransaksiRiwayatDetailTransaksi() {
           pill
           className="mt-8 ml-4"
         >
-          Cetak Data
+          <FiPrinter size="1.5em" style={{ marginRight: "0.5em" }} />
+          Data
         </Button>
       </div>
       {/* Print button end */}

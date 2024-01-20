@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { Table } from "flowbite-react";
 import { Button } from "flowbite-react";
+import { FiPrinter } from "react-icons/fi";
 import Link from "next/link";
 
 export default function AdminObatTransaksiRiwayat() {
@@ -293,7 +294,8 @@ export default function AdminObatTransaksiRiwayat() {
         pill
         onClick={handlePrintRiwayat}
       >
-        Cetak Riwayat Transaksi
+        <FiPrinter size="1.5em" style={{ marginRight: "0.5em" }} />
+        Riwayat
       </Button>
 
       <Link href="/Admin/Obat/Transaksi/Riwayat/DetailTransaksi">

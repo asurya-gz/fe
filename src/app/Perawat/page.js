@@ -9,7 +9,7 @@ import { AiOutlineTransaction } from "react-icons/ai";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { GrDocumentUser } from "react-icons/gr";
-
+import { FaLaptopMedical } from "react-icons/fa";
 export default function Perawat() {
   const router = useRouter();
   const [user, setUser] = useState(null);
@@ -42,6 +42,11 @@ export default function Perawat() {
       icon: <GrDocumentUser size="2em" color="gray" />,
       label: "SOAP",
       link: "Perawat/Soap",
+    },
+    {
+      icon: <FaLaptopMedical size="2em" color="red" />,
+      label: "USG",
+      link: "Perawat/Usg",
     },
   ];
 
@@ -104,8 +109,7 @@ export default function Perawat() {
 
       {/* info  */}
       <Alert className="mt-4" color="info">
-        <span className="font-medium">Info!</span> Menu SOAP Akan Segera
-        Tersedia !
+        <span className="font-medium">Info!</span> Menu SOAP Sudah Tersedia !
       </Alert>
       {/* info  end */}
 
@@ -133,7 +137,7 @@ export default function Perawat() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
         {menuItems.map((menuItem, index) => (
           <Link href={menuItem.link} key={index}>
-            <div className="bg-white bg-opacity-50 backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer">
+            <div className="bg-white backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer">
               <div className="flex flex-col items-center">
                 {menuItem.icon}
                 <p className="mt-2">{menuItem.label}</p>

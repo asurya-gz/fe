@@ -258,6 +258,12 @@ export default function AdminAkun() {
       </Breadcrumb>
       {/* Breadcrumb end */}
 
+      <Link href="/Admin/Akun/AkunRole">
+        <p className="mr-4 mt-4 text-blue-700 text-right">
+          Lihat Berdasarkan Role
+        </p>
+      </Link>
+
       {/* Tambah user */}
       <Button
         className="ml-4 mt-4"

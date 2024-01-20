@@ -7,7 +7,7 @@ import axios from "axios";
 import Link from "next/link";
 import { AiOutlinePlusCircle, AiOutlineShoppingCart } from "react-icons/ai";
 
-export default function PerawatSoap() {
+export default function DokterRekamMedis() {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [tindakanList, setTindakanList] = useState([]);
@@ -181,16 +181,14 @@ export default function PerawatSoap() {
   return (
     <div className="bg-[#ffcccc] min-h-screen">
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
-        <Breadcrumb.Item href="/Perawat" icon={HiHome}>
+        <Breadcrumb.Item href="/Dokter" icon={HiHome}>
           Dashboard
         </Breadcrumb.Item>
-        <Breadcrumb.Item href="#">Soap</Breadcrumb.Item>
+        <Breadcrumb.Item href="#">Rekam Medis</Breadcrumb.Item>
       </Breadcrumb>
 
-      <Link href="/Perawat/Soap/RekamMedis">
-        <p className="mr-4 mt-4 text-blue-700 text-right">
-          Riwayat Rekam Medis
-        </p>
+      <Link href="/Dokter/RekamMedis/Detail">
+        <p className="mr-4 mt-4 text-blue-700 text-right">Detail Rekam Medis</p>
       </Link>
 
       <h1 className="ml-4 mt-4 font-bold text-2xl text-center">SOAP</h1>

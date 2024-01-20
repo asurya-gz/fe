@@ -6,6 +6,7 @@ import { Table } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { FiPrinter } from "react-icons/fi";
 
 export default function AdminObatRekap() {
   const router = useRouter();
@@ -198,7 +199,8 @@ export default function AdminObatRekap() {
       {/* Breadcrumb end */}
       {/* Cetak rekap Obat */}
       <Button className="mt-8 ml-4" color="light" pill onClick={handlePrint}>
-        Cetak Rekap Obat
+        <FiPrinter size="1.5em" style={{ marginRight: "0.5em" }} />
+        Rekap
       </Button>
       {/* Cetak rekap Obat end */}
       {/* Filter */}
