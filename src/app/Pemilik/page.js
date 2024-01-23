@@ -7,7 +7,12 @@ import { HiHome } from "react-icons/hi";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FaUserNurse, FaUser, FaFileMedicalAlt } from "react-icons/fa";
+import {
+  FaUserNurse,
+  FaUser,
+  FaFileMedicalAlt,
+  FaLaptopMedical,
+} from "react-icons/fa";
 import { Alert } from "flowbite-react";
 
 export default function Pemilik() {
@@ -47,6 +52,11 @@ export default function Pemilik() {
       icon: <FaFileMedicalAlt size="2em" color="blue" />,
       label: "Rekam Medis",
       link: "Pemilik/RekamMedis",
+    },
+    {
+      icon: <FaLaptopMedical size="2em" color="red" />,
+      label: "USG",
+      link: "Pemilik/Usg",
     },
   ];
 

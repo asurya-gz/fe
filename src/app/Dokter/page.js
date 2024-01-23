@@ -5,7 +5,7 @@ import axios from "axios";
 import { Breadcrumb } from "flowbite-react";
 import { HiHome } from "react-icons/hi";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
-import { FaFileMedicalAlt } from "react-icons/fa";
+import { FaFileMedicalAlt, FaLaptopMedical } from "react-icons/fa";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -36,6 +36,11 @@ export default function Dokter() {
       icon: <FaFileMedicalAlt size="2em" color="blue" />,
       label: "Rekam Medis",
       link: "/Dokter/RekamMedis",
+    },
+    {
+      icon: <FaLaptopMedical size="2em" color="red" />,
+      label: "USG",
+      link: "/Dokter/Usg",
     },
   ];
 

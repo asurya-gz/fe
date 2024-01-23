@@ -7,74 +7,11 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { FiPrinter } from "react-icons/fi";
 
-export default function PerawatUsgRiwayat() {
+export default function AdminUsgRiwayat() {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [pasienUsgData, setPasienUsgData] = useState([]);
   const [filterOption, setFilterOption] = useState("Semua");
-
-  const filterDataByOption = () => {
-    // Filter data sesuai dengan opsi yang dipilih
-    if (filterOption === "Hari Ini") {
-      const today = new Date().toLocaleDateString();
-      return pasienUsgData.filter(
-        (pasien) => formatDate(pasien.tanggal_usg) === today
-      );
-    } else {
-      return pasienUsgData; // Tampilkan semua data jika opsi "Semua" dipilih
-    }
-  };
-
-  const fetchPasienUsgData = async () => {
-    try {
-      const response = await axios.get(
-        "https://bekk.up.railway.app/datapasienusg"
-      );
-      console.log("Pasien USG data:", response.data);
-
-      // Pastikan response.data.pasien_usg terdefinisi dan merupakan array
-      if (Array.isArray(response.data.pasien_usg)) {
-        // Ubah format tanggal atau lakukan manipulasi data lainnya jika diperlukan
-        const pasienUsgFormatted = response.data.pasien_usg.map((pasien) => ({
-          ...pasien,
-          // Tambahkan manipulasi data lain jika diperlukan
-        }));
-
-        setPasienUsgData(pasienUsgFormatted);
-      } else {
-        console.error("Invalid pasien USG data:", response.data.pasien_usg);
-      }
-    } catch (error) {
-      console.error("Error fetching pasien USG data:", error.message);
-    }
-  };
-
-  useEffect(() => {
-    fetchPasienUsgData();
-  }, []);
-  // Session
-  useEffect(() => {
-    // Fetch user details or check session status
-    const fetchUser = async () => {
-      try {
-        const response = await axios.get("https://bekk.up.railway.app/user", {
-          withCredentials: true,
-        });
-        console.log("User data:", response.data);
-        setUser(response.data.user);
-      } catch (error) {
-        console.error("Error fetching user:", error.message);
-        // Redirect to login page if not authenticated
-        router.push("/");
-      }
-    };
-
-    fetchUser();
-  }, [router]);
-  const formatDate = (dateString) => {
-    const options = { year: "numeric", month: "numeric", day: "numeric" };
-    return new Date(dateString).toLocaleDateString(undefined, options);
-  };
 
   const handlePrintRiwayat = async () => {
     try {
@@ -222,17 +159,89 @@ export default function PerawatUsgRiwayat() {
     }
   };
 
+  const filterDataByOption = () => {
+    // Filter data sesuai dengan opsi yang dipilih
+    if (filterOption === "Hari Ini") {
+      const today = new Date().toLocaleDateString();
+      return pasienUsgData.filter(
+        (pasien) => formatDate(pasien.tanggal_usg) === today
+      );
+    } else {
+      return pasienUsgData; // Tampilkan semua data jika opsi "Semua" dipilih
+    }
+  };
+
+  const fetchPasienUsgData = async () => {
+    try {
+      const response = await axios.get(
+        "https://bekk.up.railway.app/datapasienusg"
+      );
+      console.log("Pasien USG data:", response.data);
+
+      // Pastikan response.data.pasien_usg terdefinisi dan merupakan array
+      if (Array.isArray(response.data.pasien_usg)) {
+        // Ubah format tanggal atau lakukan manipulasi data lainnya jika diperlukan
+        const pasienUsgFormatted = response.data.pasien_usg.map((pasien) => ({
+          ...pasien,
+          // Tambahkan manipulasi data lain jika diperlukan
+        }));
+
+        setPasienUsgData(pasienUsgFormatted);
+      } else {
+        console.error("Invalid pasien USG data:", response.data.pasien_usg);
+      }
+    } catch (error) {
+      console.error("Error fetching pasien USG data:", error.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchPasienUsgData();
+  }, []);
+  // Session
+  useEffect(() => {
+    // Fetch user details or check session status
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get("https://bekk.up.railway.app/user", {
+          withCredentials: true,
+        });
+        console.log("User data:", response.data);
+        setUser(response.data.user);
+      } catch (error) {
+        console.error("Error fetching user:", error.message);
+        // Redirect to login page if not authenticated
+        router.push("/");
+      }
+    };
+
+    fetchUser();
+  }, [router]);
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "numeric", day: "numeric" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
   return (
     <div className="bg-[#ffcccc] min-h-screen">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
-        <Breadcrumb.Item href="/Perawat" icon={HiHome}>
+        <Breadcrumb.Item href="/Admin" icon={HiHome}>
           Dashboard
         </Breadcrumb.Item>
-        <Breadcrumb.Item href="/Perawat/Usg">USG</Breadcrumb.Item>
+        <Breadcrumb.Item href="/Admin/Usg">USG</Breadcrumb.Item>
         <Breadcrumb.Item href="#">Riwayat</Breadcrumb.Item>
       </Breadcrumb>
       {/* Breadcrumb end */}
+      {/* Cetak rekap Obat */}
+      <Button
+        className="mt-8 ml-4"
+        color="light"
+        pill
+        onClick={handlePrintRiwayat}
+      >
+        <FiPrinter size="1.5em" style={{ marginRight: "0.5em" }} />
+        Cetak
+      </Button>
 
       {/* UI untuk opsi filter */}
       <div className="flex items-center mt-4">
@@ -246,17 +255,6 @@ export default function PerawatUsgRiwayat() {
           <option value="Hari Ini">Hari Ini</option>
         </select>
       </div>
-
-      {/* Cetak rekap Obat */}
-      <Button
-        className="mt-8 ml-4"
-        color="light"
-        pill
-        onClick={handlePrintRiwayat}
-      >
-        <FiPrinter size="1.5em" style={{ marginRight: "0.5em" }} />
-        Cetak
-      </Button>
 
       {/* Tabel untuk menampilkan data pasien USG */}
       <div className="container mx-auto mt-8 overflow-x-auto">

@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
-export default function PerawatUsgFormulir() {
+export default function AdminUsgFormulir() {
   const router = useRouter();
   const [user, setUser] = useState(null);
 
@@ -67,10 +67,10 @@ export default function PerawatUsgFormulir() {
     <div className="bg-[#ffcccc] min-h-screen">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
-        <Breadcrumb.Item href="/Perawat" icon={HiHome}>
+        <Breadcrumb.Item href="/Admin" icon={HiHome}>
           Dashboard
         </Breadcrumb.Item>
-        <Breadcrumb.Item href="/Perawat/Usg">USG</Breadcrumb.Item>
+        <Breadcrumb.Item href="/Admin/Usg">USG</Breadcrumb.Item>
         <Breadcrumb.Item href="#">Formulir</Breadcrumb.Item>
       </Breadcrumb>
       {/* Breadcrumb end */}

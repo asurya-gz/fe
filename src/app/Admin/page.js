@@ -7,7 +7,12 @@ import { HiHome } from "react-icons/hi";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FaCapsules, FaUser, FaFileMedicalAlt } from "react-icons/fa";
+import {
+  FaCapsules,
+  FaUser,
+  FaFileMedicalAlt,
+  FaLaptopMedical,
+} from "react-icons/fa";
 
 export default function Admin() {
   const router = useRouter();
@@ -46,6 +51,11 @@ export default function Admin() {
       icon: <FaFileMedicalAlt size="2em" color="gray" />,
       label: "Rekam Medis",
       link: "Admin/RekamMedis",
+    },
+    {
+      icon: <FaLaptopMedical size="2em" color="red" />,
+      label: "USG",
+      link: "Admin/Usg",
     },
   ];
 
