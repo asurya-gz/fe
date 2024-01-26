@@ -35,6 +35,11 @@ export default function Perawat() {
   const menuItems = [
     {
       icon: <AiOutlineTransaction size="2em" color="blue" />,
+      label: "Pendaftaran",
+      link: "Perawat/Pendaftaran",
+    },
+    {
+      icon: <AiOutlineTransaction size="2em" color="blue" />,
       label: "Transaksi",
       link: "Perawat/Transaksi",
     },
