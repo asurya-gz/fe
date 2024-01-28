@@ -9,7 +9,7 @@ import { AiOutlineTransaction } from "react-icons/ai";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { GrDocumentUser } from "react-icons/gr";
-import { FaLaptopMedical } from "react-icons/fa";
+import { FaLaptopMedical, FaBookOpen } from "react-icons/fa";
 export default function Perawat() {
   const router = useRouter();
   const [user, setUser] = useState(null);
@@ -34,7 +34,7 @@ export default function Perawat() {
 
   const menuItems = [
     {
-      icon: <AiOutlineTransaction size="2em" color="blue" />,
+      icon: <FaBookOpen size="2em" color="green" />,
       label: "Pendaftaran",
       link: "Perawat/Pendaftaran",
     },
