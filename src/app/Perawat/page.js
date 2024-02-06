@@ -4,12 +4,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Breadcrumb } from "flowbite-react";
 import { HiHome } from "react-icons/hi";
-import { Avatar, Dropdown, Navbar, Alert } from "flowbite-react";
-import { AiOutlineTransaction } from "react-icons/ai";
-import Link from "next/link";
+import { Avatar, Dropdown, Navbar } from "flowbite-react";
+import { CiViewList } from "react-icons/ci";
 import { useRouter } from "next/navigation";
 import { GrDocumentUser } from "react-icons/gr";
-import { FaLaptopMedical, FaBookOpen } from "react-icons/fa";
+import Link from "next/link";
 export default function Perawat() {
   const router = useRouter();
   const [user, setUser] = useState(null);
@@ -32,29 +31,6 @@ export default function Perawat() {
     fetchUser();
   }, [router]);
 
-  const menuItems = [
-    {
-      icon: <FaBookOpen size="2em" color="green" />,
-      label: "Pendaftaran",
-      link: "Perawat/Pendaftaran",
-    },
-    {
-      icon: <AiOutlineTransaction size="2em" color="blue" />,
-      label: "Transaksi",
-      link: "Perawat/Transaksi",
-    },
-    {
-      icon: <GrDocumentUser size="2em" color="gray" />,
-      label: "SOAP",
-      link: "Perawat/Soap",
-    },
-    {
-      icon: <FaLaptopMedical size="2em" color="red" />,
-      label: "USG",
-      link: "Perawat/Usg",
-    },
-  ];
-
   const handleLogout = async () => {
     try {
       // Menghapus sesi (session) dari server
@@ -70,8 +46,22 @@ export default function Perawat() {
     }
   };
 
+  // Menu
+  const menuItems = [
+    {
+      icon: <GrDocumentUser size="2em" color="darkBlue" />,
+      label: "Pendaftaran",
+      link: "/Perawat/Pendaftaran",
+    },
+    {
+      icon: <CiViewList size="2em" color="darkBlue" />,
+      label: "List pasien",
+      link: "/Perawat/List",
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-[#ffcccc] relative">
+    <div className="min-h-screen bg-slate-400 relative">
       {/* Navbar */}
       <Navbar fluid rounded>
         <Navbar.Brand href="#">
@@ -90,12 +80,6 @@ export default function Perawat() {
             inline
             label={<Avatar alt="User settings" img="/perawat.jpg" rounded />}
           >
-            <Dropdown.Header>
-              <span className="block text-sm">
-                {user ? user.username : "Loading..."}
-              </span>
-            </Dropdown.Header>
-            <Dropdown.Item href="#">Dashboard</Dropdown.Item>
             <Dropdown.Item href="/Perawat/Profile">Profile</Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
@@ -112,12 +96,6 @@ export default function Perawat() {
       </Breadcrumb>
       {/* Breadcrumb end */}
 
-      {/* info  */}
-      <Alert className="mt-4" color="info">
-        <span className="font-medium">Info!</span> Menu SOAP Sudah Tersedia !
-      </Alert>
-      {/* info  end */}
-
       {/* Box profile */}
       <div className="mt-4 p-4">
         <div className="bg-white p-6 rounded-lg shadow-md text-center">
@@ -128,7 +106,9 @@ export default function Perawat() {
           />
           {user ? (
             <>
-              <h3 className="text-xl font-bold mb-2">{user.username}</h3>
+              <h3 className="text-xl font-bold mb-2 text-blue-800">
+                {user.username}
+              </h3>
               <p className="text-gray-600">{user.role}</p>
             </>
           ) : (
@@ -139,10 +119,10 @@ export default function Perawat() {
       {/* Box profile end */}
 
       {/* Box Menu */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 ml-4">
         {menuItems.map((menuItem, index) => (
           <Link href={menuItem.link} key={index}>
-            <div className="bg-white backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer">
+            <div className="bg-white backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer text-black">
               <div className="flex flex-col items-center">
                 {menuItem.icon}
                 <p className="mt-2">{menuItem.label}</p>

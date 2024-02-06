@@ -57,7 +57,7 @@ export default function MyPage() {
   };
 
   return (
-    <div className="bg-[#ffcccc] min-h-screen">
+    <div className="bg-slate-400 min-h-screen">
       {/* Navbar */}
       <Navbar fluid rounded>
         <Navbar.Brand href="#">
@@ -66,7 +66,7 @@ export default function MyPage() {
             className="mr-3 h-6 sm:h-9"
             alt="Flowbite React Logo"
           />
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+          <span className="self-center whitespace-nowrap text-xl font-bold text-blue-900">
             Klinik Kartika
           </span>
         </Navbar.Brand>
@@ -80,8 +80,10 @@ export default function MyPage() {
           className="mx-auto mb-4"
           style={{ maxWidth: "150px" }} // Adjust the max width according to your needs
         />
-        <h1 className="text-2xl font-semibold mb-4">KLINIK KARTIKA</h1>
-        <p className="text-gray-600">
+        <h1 className="font-bold text-blue-900 text-4xl mb-4">
+          KLINIK KARTIKA
+        </h1>
+        <p className="text-white">
           Sistem Manajemen klinik Kartika. Silahkan Login Untuk Melanjutkan
         </p>
       </div>
@@ -119,13 +121,14 @@ export default function MyPage() {
                 id="password"
                 type="password"
                 required
+                placeholder="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <Button
               type="submit"
-              className="bg-pink-500 hover:bg-pink-600 text-white"
+              className="bg-blue-900 hover:bg-pink-600 text-white"
             >
               <AiOutlineLogin size="1.5em" style={{ marginRight: "0.5em" }} />
               Masuk

@@ -5,6 +5,7 @@ import axios from "axios";
 import { Breadcrumb } from "flowbite-react";
 import { HiHome } from "react-icons/hi";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
+import BarChart from "../components/Pemilik/BarChart";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -14,6 +15,8 @@ import {
   FaLaptopMedical,
 } from "react-icons/fa";
 import { Alert } from "flowbite-react";
+import LineChart from "../components/Pemilik/LineChart";
+import CountingAnimation from "../components/Pemilik/Counting";
 
 export default function Pemilik() {
   const router = useRouter();
@@ -37,29 +40,6 @@ export default function Pemilik() {
     fetchUser();
   }, [router]);
 
-  const menuItems = [
-    {
-      icon: <FaUser size="2em" color="purple" />,
-      label: "Akun",
-      link: "Pemilik/Akun",
-    },
-    {
-      icon: <FaUserNurse size="2em" color="green" />,
-      label: "Apoteker",
-      link: "Pemilik/Apoteker",
-    },
-    {
-      icon: <FaFileMedicalAlt size="2em" color="blue" />,
-      label: "Rekam Medis",
-      link: "Pemilik/RekamMedis",
-    },
-    {
-      icon: <FaLaptopMedical size="2em" color="red" />,
-      label: "USG",
-      link: "Pemilik/Usg",
-    },
-  ];
-
   const handleLogout = async () => {
     try {
       // Menghapus sesi (session) dari server
@@ -75,8 +55,22 @@ export default function Pemilik() {
     }
   };
 
+  // Menu
+  const menuItems = [
+    {
+      icon: <FaUser size="2em" color="darkBlue" />,
+      label: "Akun",
+      link: "/Pemilik/Akun",
+    },
+    {
+      icon: <FaUserNurse size="2em" color="darkBlue" />,
+      label: "Obat",
+      link: "/Pemilik/Apoteker",
+    },
+  ];
+
   return (
-    <div className="h-screen bg-[#ffcccc] relative">
+    <div className="min-h-screen bg-slate-400 relative">
       {/* Navbar */}
       <Navbar fluid rounded>
         <Navbar.Brand href="#">
@@ -94,13 +88,9 @@ export default function Pemilik() {
             arrowIcon={false}
             inline
             label={<Avatar alt="User settings" img="/perawat.jpg" rounded />}
+            // Add the 'w' class to set the width of the dropdown
+            menuClass="w-48"
           >
-            <Dropdown.Header>
-              <span className="block text-sm">
-                {user ? user.username : "Loading..."}
-              </span>
-            </Dropdown.Header>
-            <Dropdown.Item href="#">Dashboard</Dropdown.Item>
             <Dropdown.Item href="/Pemilik/Profile">Profile</Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
@@ -115,12 +105,7 @@ export default function Pemilik() {
         </Breadcrumb.Item>
       </Breadcrumb>
       {/* Breadcrumb end */}
-      {/* info  */}
-      <Alert className="mt-4" color="info">
-        <span className="font-medium">Info!</span> Menu Akun Akan Segera
-        Tersedia !
-      </Alert>
-      {/* info  end */}
+
       {/* Box profile */}
       <div className="mt-4 p-4">
         <div className="bg-white p-6 rounded-lg shadow-md text-center">
@@ -131,7 +116,9 @@ export default function Pemilik() {
           />
           {user ? (
             <>
-              <h3 className="text-xl font-bold mb-2">{user.username}</h3>
+              <h3 className="text-xl font-bold mb-2 text-blue-800">
+                {user.username}
+              </h3>
               <p className="text-gray-600">{user.role}</p>
             </>
           ) : (
@@ -140,8 +127,37 @@ export default function Pemilik() {
         </div>
       </div>
       {/* Box profile end */}
+
+      {/* Responsive Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+        {/* Card 1 */}
+        <div className="bg-white p-4 rounded-lg shadow-md">
+          <h3 className="text-xl font-bold mb-2 text-blue-800">
+            Pendapatan Obat
+          </h3>
+          <BarChart />
+        </div>
+
+        {/* Card 2 */}
+        <div className="bg-white p-4 rounded-lg shadow-md">
+          <h3 className="text-xl font-bold mb-2 text-blue-800">
+            Kunjungan Pasien
+          </h3>
+          <LineChart />
+        </div>
+
+        {/* Card 3 */}
+        <div className="bg-white p-4 rounded-lg shadow-md">
+          <h3 className="text-xl font-bold mb-2 text-blue-800">
+            Pasien Terdaftar
+          </h3>
+          <CountingAnimation />
+        </div>
+      </div>
+      {/* Responsive Cards end */}
+
       {/* Box Menu */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 ml-4">
         {menuItems.map((menuItem, index) => (
           <Link href={menuItem.link} key={index}>
             <div className="bg-white backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer text-black">

@@ -163,7 +163,7 @@ export default function ApotekerObatList() {
   // Fetch Data Obat end
 
   return (
-    <div className="min-h-screen bg-[#ffcccc]">
+    <div className="min-h-screen bg-slate-400">
       {" "}
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
@@ -174,47 +174,54 @@ export default function ApotekerObatList() {
         <Breadcrumb.Item href="#">List</Breadcrumb.Item>
       </Breadcrumb>
       {/* Breadcrumb end */}
-      {/* Button Cetak List Obat */}
-      <Button className="mt-8 ml-4" color="light" pill onClick={handlePrint}>
-        <FiPrinter size="1.5em" style={{ marginRight: "0.5em" }} />
-        Cetak
-      </Button>
-      {/* Button Cetak List Obat End*/}
-      {/* Dropdown Filter */}
-      <div className="mt-4 ml-4">
-        <label htmlFor="jenisFilter" className="mr-2">
-          Filter:
-        </label>
-        <select
-          id="jenisFilter"
-          value={filter}
-          onChange={(e) => setFilter(e.target.value)}
-        >
-          <option value="INJEKSI">Injeksi</option>
-          <option value="OBAT">Obat</option>
-        </select>
+      <div className="flex">
+        {" "}
+        {/* Button Cetak List Obat */}
+        <Button className="mt-8 ml-4" color="blue" pill onClick={handlePrint}>
+          <FiPrinter size="1.5em" style={{ marginRight: "0.5em" }} />
+          Cetak
+        </Button>
+        {/* Button Cetak List Obat End*/}
+        {/* Dropdown Filter */}
+        <div className="mt-8 ml-4">
+          <select
+            className="rounded-2xl border-none bg-yellow-300"
+            id="jenisFilter"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+          >
+            <option value="INJEKSI">Injeksi</option>
+            <option value="OBAT">Obat</option>
+          </select>
+        </div>
+        {/* Dropdown Filter End */}
       </div>
-      {/* Dropdown Filter End */}
       {/* Table */}
-      <div className="overflow-x-auto mt-8">
+      <div className="overflow-x-auto mt-8 mx-4">
         <Table hoverable>
           <Table.Head>
-            <Table.HeadCell style={{ background: "#333", color: "white" }}>
+            <Table.HeadCell style={{ background: "darkBlue", color: "white" }}>
               Nama Obat
             </Table.HeadCell>
-            <Table.HeadCell style={{ background: "#333", color: "white" }}>
+            <Table.HeadCell style={{ background: "darkBlue", color: "white" }}>
               Harga
             </Table.HeadCell>
-            <Table.HeadCell style={{ background: "#333", color: "white" }}>
+            <Table.HeadCell style={{ background: "darkBlue", color: "white" }}>
               Jenis
             </Table.HeadCell>
           </Table.Head>
           <Table.Body>
             {obatList.map((obat) => (
               <Table.Row key={obat.id}>
-                <Table.Cell className="text-black">{obat.nama_obat}</Table.Cell>
-                <Table.Cell className="text-black">Rp. {obat.harga}</Table.Cell>
-                <Table.Cell className="text-black">{obat.jenis}</Table.Cell>
+                <Table.Cell className="text-black bg-slate-300">
+                  {obat.nama_obat}
+                </Table.Cell>
+                <Table.Cell className="text-black bg-slate-300">
+                  Rp. {obat.harga}
+                </Table.Cell>
+                <Table.Cell className="text-black bg-slate-300">
+                  {obat.jenis}
+                </Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>

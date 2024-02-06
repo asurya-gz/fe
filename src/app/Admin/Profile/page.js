@@ -117,7 +117,9 @@ export default function AdminProfile() {
 
       {adminData && (
         <div>
-          <h2 className="text-3xl font-semibold mb-4">Admin Profile</h2>
+          <h2 className="text-3xl font-semibold mb-4 text-blue-800">
+            Admin Profile
+          </h2>
           <div className="bg-white p-6 rounded-md shadow-md">
             {!isEditing ? (
               <div>
@@ -142,12 +144,15 @@ export default function AdminProfile() {
                 </p>
                 {error && <p className="text-red-500">{error}</p>}
                 <div className="flex mt-4">
-                  <Button onClick={handleEditClick} className="mr-2">
+                  <Button
+                    onClick={handleEditClick}
+                    className="bg-blue-800 text-white mr-2"
+                  >
                     Edit
                   </Button>
                   <Button
                     onClick={handleShowChangePasswordModal}
-                    className="bg-gray-500"
+                    className="bg-amber-400 text-black"
                   >
                     Change Password
                   </Button>
@@ -188,13 +193,16 @@ export default function AdminProfile() {
 
                 {error && <p className="text-red-500">{error}</p>}
                 <div className="flex mt-4">
-                  <Button onClick={handleSaveClick} className="mr-2">
+                  <Button
+                    onClick={handleSaveClick}
+                    className="mr-2 bg-blue-800"
+                  >
                     Save
                   </Button>
                   <Button
                     onClick={() => setIsEditing(false)}
                     variant="outlined"
-                    className="bg-red-500 border border-gray-500"
+                    className="bg-red-500 hover:bg-yellow-400 text-black"
                   >
                     Cancel
                   </Button>
@@ -220,7 +228,10 @@ export default function AdminProfile() {
               />
             </div>
             <div className="flex justify-end">
-              <Button onClick={handleChangePassword} className="mr-2">
+              <Button
+                onClick={handleChangePassword}
+                className="mr-2 bg-blue-800"
+              >
                 Save
               </Button>
               <Button

@@ -39,28 +39,23 @@ export default function PemilikApoteker() {
 
   const menuItems = [
     {
-      icon: <FaList size="2em" color="green" />,
+      icon: <FaList size="2em" color="darkBlue" />,
       label: "List Obat",
       link: "/Pemilik/Apoteker/List",
     },
     {
-      icon: <FaClipboard size="2em" color="pink" />,
+      icon: <FaClipboard size="2em" color="darkBlue" />,
       label: "Rekap Obat",
       link: "/Pemilik/Apoteker/Rekap",
     },
     {
-      icon: <FaHistory size="2em" color="gray" />,
+      icon: <FaHistory size="2em" color="darkBlue" />,
       label: "Riwayat Transaksi",
       link: "/Pemilik/Apoteker/Riwayat",
     },
-    {
-      icon: <FaSearch size="2em" color="black" />,
-      label: "Pencarian",
-      link: "/Pemilik/Apoteker/Pencarian",
-    },
   ];
   return (
-    <div className="h-screen bg-[#ffcccc] relative">
+    <div className="min-h-screen bg-slate-400 relative">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
         <Breadcrumb.Item href="/Pemilik" icon={HiHome}>
@@ -70,7 +65,7 @@ export default function PemilikApoteker() {
       </Breadcrumb>
       {/* Breadcrumb end */}
       {/* Box Menu */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 mx-4">
         {menuItems.map((menuItem, index) => (
           <Link href={menuItem.link} key={index}>
             <div className="bg-white backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer text-black">

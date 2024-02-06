@@ -32,29 +32,29 @@ export default function PemilikAkun() {
 
   const menuItems = [
     {
-      icon: <FaHospitalUser size="2em" color="blue" />,
+      icon: <FaHospitalUser size="2em" color="darkBlue" />,
       label: "Apoteker",
       link: "/Pemilik/Akun/Apoteker",
     },
     {
-      icon: <FaUserCog size="2em" color="gray" />,
+      icon: <FaUserCog size="2em" color="darkBlue" />,
       label: "Admin",
       link: "/Pemilik/Akun/Admin",
     },
     {
-      icon: <FaUserNurse size="2em" color="green" />,
+      icon: <FaUserNurse size="2em" color="darkBlue" />,
       label: "Perawat",
       link: "/Pemilik/Akun/Perawat",
     },
     {
-      icon: <FaUserMd size="2em" color="purple" />,
+      icon: <FaUserMd size="2em" color="darkBlue" />,
       label: "Dokter",
       link: "/Pemilik/Akun/Dokter",
     },
   ];
 
   return (
-    <div className="bg-[#ffcccc] min-h-screen">
+    <div className="bg-slate-400 min-h-screen">
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
         <Breadcrumb.Item href="/Pemilik" icon={HiHome}>
           Dashboard
@@ -63,7 +63,7 @@ export default function PemilikAkun() {
       </Breadcrumb>
 
       {/* Box Menu */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 ml-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 mx-4">
         {menuItems.map((menuItem, index) => (
           <Link href={menuItem.link} key={index}>
             <div className="bg-white backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer text-black">

@@ -112,8 +112,10 @@ export default function DokterProfile() {
       </Breadcrumb>
 
       {dokterData && (
-        <div>
-          <h2 className="text-3xl font-semibold mb-4">Dokter Profile</h2>
+        <div className="mx-4 mt-4">
+          <h2 className="text-3xl font-semibold mb-4 text-blue-800">
+            Dokter Profile
+          </h2>
           <div className="bg-white p-6 rounded-md shadow-md">
             {!isEditing ? (
               <div>
@@ -138,11 +140,14 @@ export default function DokterProfile() {
                 </p>
                 {error && <p className="text-red-500">{error}</p>}
                 <div className="flex mt-4">
-                  <Button onClick={handleEditClick} className="mr-2">
+                  <Button
+                    onClick={handleEditClick}
+                    className="mr-2 bg-blue-800"
+                  >
                     Edit
                   </Button>
                   <Button
-                    className="bg-gray-500"
+                    className="bg-amber-400 text-black"
                     onClick={handleShowChangePasswordModal}
                   >
                     Change Password
@@ -184,13 +189,16 @@ export default function DokterProfile() {
 
                 {error && <p className="text-red-500">{error}</p>}
                 <div className="flex mt-4">
-                  <Button onClick={handleSaveClick} className="mr-2">
+                  <Button
+                    onClick={handleSaveClick}
+                    className="mr-2 bg-blue-800"
+                  >
                     Save
                   </Button>
                   <Button
                     onClick={() => setIsEditing(false)}
                     variant="outlined"
-                    className="bg-red-500 border border-gray-500"
+                    className="bg-red-500 text-black"
                   >
                     Cancel
                   </Button>
@@ -216,13 +224,16 @@ export default function DokterProfile() {
               />
             </div>
             <div className="flex justify-end">
-              <Button onClick={handleChangePassword} className="mr-2">
+              <Button
+                onClick={handleChangePassword}
+                className="mr-2 bg-blue-800"
+              >
                 Save
               </Button>
               <Button
                 onClick={() => setShowChangePasswordModal(false)}
                 variant="outlined"
-                className="bg-red-500"
+                className="bg-red-500 text-black"
               >
                 Cancel
               </Button>

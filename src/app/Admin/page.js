@@ -36,29 +36,6 @@ export default function Admin() {
     fetchUser();
   }, [router]);
 
-  const menuItems = [
-    {
-      icon: <FaCapsules size="2em" color="green" />,
-      label: "Obat",
-      link: "Admin/Obat",
-    },
-    {
-      icon: <FaUser size="2em" color="purple" />,
-      label: "Akun",
-      link: "Admin/Akun",
-    },
-    {
-      icon: <FaFileMedicalAlt size="2em" color="gray" />,
-      label: "Rekam Medis",
-      link: "Admin/RekamMedis",
-    },
-    {
-      icon: <FaLaptopMedical size="2em" color="red" />,
-      label: "USG",
-      link: "Admin/Usg",
-    },
-  ];
-
   const handleLogout = async () => {
     try {
       // Menghapus sesi (session) dari server
@@ -93,15 +70,21 @@ export default function Admin() {
             inline
             label={<Avatar alt="User settings" img="/perawat.jpg" rounded />}
           >
-            <Dropdown.Header>
-              <span className="block text-sm">
-                {user ? user.username : "Loading..."}
-              </span>
-            </Dropdown.Header>
-            <Dropdown.Item href="#">Dashboard</Dropdown.Item>
             <Dropdown.Item href="/Admin/Profile">Profile</Dropdown.Item>
-            <Dropdown.Divider />
             <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+            <Dropdown.Divider />
+            <Dropdown.Item href="/Admin/Obat">
+              <FaCapsules className="mr-1 text-blue-800" />
+              Obat
+            </Dropdown.Item>
+            <Dropdown.Item href="/Admin/Akun">
+              <FaUser className="mr-1 text-blue-800" />
+              Akun
+            </Dropdown.Item>
+            <Dropdown.Item href="/Admin/Usg">
+              <FaLaptopMedical className="mr-1 text-blue-800" />
+              USG
+            </Dropdown.Item>
           </Dropdown>
         </div>
       </Navbar>
@@ -125,7 +108,9 @@ export default function Admin() {
           />
           {user ? (
             <>
-              <h3 className="text-xl font-bold mb-2">{user.username}</h3>
+              <h3 className="text-xl font-bold mb-2 text-blue-800">
+                {user.username}
+              </h3>
               <p className="text-gray-600">{user.role}</p>
             </>
           ) : (
@@ -134,21 +119,6 @@ export default function Admin() {
         </div>
       </div>
       {/* Box profile end */}
-
-      {/* Box Menu */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-        {menuItems.map((menuItem, index) => (
-          <Link href={menuItem.link} key={index}>
-            <div className="bg-white backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer">
-              <div className="flex flex-col items-center">
-                {menuItem.icon}
-                <p className="mt-2">{menuItem.label}</p>
-              </div>
-            </div>
-          </Link>
-        ))}
-      </div>
-      {/* Box Menu End */}
     </div>
   );
 }

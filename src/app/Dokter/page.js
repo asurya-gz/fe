@@ -31,24 +31,6 @@ export default function Dokter() {
     fetchUser();
   }, [router]);
 
-  const menuItems = [
-    {
-      icon: <FaBookOpen size="2em" color="green" />,
-      label: "Pendaftaran",
-      link: "Dokter/Pendaftaran",
-    },
-    {
-      icon: <FaFileMedicalAlt size="2em" color="blue" />,
-      label: "Rekam Medis",
-      link: "/Dokter/RekamMedis",
-    },
-    {
-      icon: <FaLaptopMedical size="2em" color="red" />,
-      label: "USG",
-      link: "/Dokter/Usg",
-    },
-  ];
-
   const handleLogout = async () => {
     try {
       // Menghapus sesi (session) dari server
@@ -84,15 +66,13 @@ export default function Dokter() {
             inline
             label={<Avatar alt="User settings" img="/perawat.jpg" rounded />}
           >
-            <Dropdown.Header>
-              <span className="block text-sm">
-                {user ? user.username : "Loading..."}
-              </span>
-            </Dropdown.Header>
-            <Dropdown.Item href="#">Dashboard</Dropdown.Item>
             <Dropdown.Item href="/Dokter/Profile">Profile</Dropdown.Item>
-            <Dropdown.Divider />
             <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+            <Dropdown.Divider />
+            <Dropdown.Item href="/Dokter/Usg">
+              <FaLaptopMedical className="mr-1 font-bold text-blue-800" />
+              USG
+            </Dropdown.Item>
           </Dropdown>
         </div>
       </Navbar>
@@ -116,7 +96,9 @@ export default function Dokter() {
           />
           {user ? (
             <>
-              <h3 className="text-xl font-bold mb-2">{user.username}</h3>
+              <h3 className="text-xl font-bold mb-2 text-blue-800">
+                {user.username}
+              </h3>
               <p className="text-gray-600">{user.role}</p>
             </>
           ) : (
@@ -125,21 +107,6 @@ export default function Dokter() {
         </div>
       </div>
       {/* Box profile end */}
-
-      {/* Box Menu */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-        {menuItems.map((menuItem, index) => (
-          <Link href={menuItem.link} key={index}>
-            <div className="bg-white backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer">
-              <div className="flex flex-col items-center">
-                {menuItem.icon}
-                <p className="mt-2">{menuItem.label}</p>
-              </div>
-            </div>
-          </Link>
-        ))}
-      </div>
-      {/* Box Menu End */}
     </div>
   );
 }
