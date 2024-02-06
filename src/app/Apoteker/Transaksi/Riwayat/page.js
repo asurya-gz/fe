@@ -417,7 +417,7 @@ export default function ApotekerTransaksiRiwayat() {
   );
 
   return (
-    <div className="bg-[#ffcccc] min-h-screen">
+    <div className="bg-slate-400 min-h-screen">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
         <Breadcrumb.Item href="/Apoteker" icon={HiHome}>
@@ -427,19 +427,6 @@ export default function ApotekerTransaksiRiwayat() {
         <Breadcrumb.Item href="#">Riwayat</Breadcrumb.Item>
       </Breadcrumb>
       {/* Breadcrumb end */}
-
-      {/* Dropdown filter */}
-      <div className="mt-8 ml-4">
-        <select
-          className="bg-[#333] text-white p-1 rounded-xl text-center outline-none cursor-pointer"
-          value={filterOption}
-          onChange={(e) => handleFilterChange(e.target.value)}
-        >
-          <option value="Semua">Semua</option>
-          <option value="Hari Ini">Hari Ini</option>
-        </select>
-      </div>
-      {/* Dropdown filter end */}
 
       {/* Search input */}
       <div className="mt-8 ml-4">
@@ -452,30 +439,43 @@ export default function ApotekerTransaksiRiwayat() {
         />
       </div>
       {/* Search input end */}
-
-      {/* Cetak */}
-      {/* Cetak rekap Obat */}
-      <Button
-        className="mt-8 ml-4"
-        color="light"
-        pill
-        onClick={handlePrintRiwayat}
-      >
-        <FiPrinter size="1.5em" style={{ marginRight: "0.5em" }} />
-        Riwayat
-      </Button>
-
-      {/* Cetak rekap Obat end */}
+      <div className="flex">
+        {" "}
+        {/* Cetak rekap Obat */}
+        <Button
+          className="mt-8 ml-4"
+          color="blue"
+          pill
+          onClick={handlePrintRiwayat}
+        >
+          <FiPrinter size="1.5em" style={{ marginRight: "0.5em" }} />
+          Riwayat
+        </Button>
+        {/* Cetak rekap Obat end */}
+        {/* Dropdown filter */}
+        <div className="mt-8 ml-4">
+          <select
+            className="bg-amber-400 text-black p-2 rounded-xl text-center outline-none cursor-pointer"
+            value={filterOption}
+            onChange={(e) => handleFilterChange(e.target.value)}
+          >
+            <option value="Semua">Semua</option>
+            <option value="Hari Ini">Hari Ini</option>
+          </select>
+        </div>
+        {/* Dropdown filter end */}
+      </div>
       {/* Cetak end */}
+
       {/* Table Riwayat */}
       <div className="overflow-x-auto mt-8 mx-4">
-        <table className="min-w-full border border-gray-300">
+        <table className="min-w-full">
           <thead>
-            <tr className="bg-gray-800 text-white">
-              <th className="py-2 px-4 border border-black">ID</th>
-              <th className="py-2 px-4 border border-black">Tanggal</th>
-              <th className="py-2 px-4 border border-black">Nama</th>
-              <th className="py-2 px-4 border border-black">Harga</th>
+            <tr className="bg-blue-800 text-white">
+              <th className="py-2 px-4">ID</th>
+              <th className="py-2 px-4">Tanggal</th>
+              <th className="py-2 px-4">Nama</th>
+              <th className="py-2 px-4">Harga</th>
             </tr>
           </thead>
           <tbody>
@@ -485,16 +485,12 @@ export default function ApotekerTransaksiRiwayat() {
                 className="border-t border-gray-300 cursor-pointer"
                 onClick={() => handleDetailClick(transaksi.id)}
               >
-                <td className="py-2 px-4 border border-black">
-                  {transaksi.id}
-                </td>
-                <td className="py-2 px-4 border border-black">
-                  {transaksi.tanggal}
-                </td>
-                <td className="py-2 px-4 border border-black">
+                <td className="py-2 px-4 bg-slate-300">{transaksi.id}</td>
+                <td className="py-2 px-4 bg-slate-300">{transaksi.tanggal}</td>
+                <td className="py-2 px-4 bg-slate-300">
                   {transaksi.nama_pembeli}
                 </td>
-                <td className="py-2 px-4 border border-black">
+                <td className="py-2 px-4 bg-slate-300">
                   Rp. {transaksi.total_harga}
                 </td>
               </tr>
@@ -586,7 +582,7 @@ export default function ApotekerTransaksiRiwayat() {
       {/* Modal Detail Transaksi end */}
 
       {/* Total Pemasukan */}
-      <div className="mt-4 ml-4">
+      <div className="mt-4 ml-4 text-white font-bold">
         <strong>Total Pemasukan: Rp. {totalPemasukan.toLocaleString()}</strong>
       </div>
       {/* Total Pemasukan end */}

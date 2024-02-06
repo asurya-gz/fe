@@ -54,8 +54,22 @@ export default function Apoteker() {
     }
   };
 
+  // Menu
+  const menuItems = [
+    {
+      icon: <AiOutlineMedicineBox size="2em" color="darkBlue" />,
+      label: "Obat",
+      link: "/Apoteker/Obat",
+    },
+    {
+      icon: <AiOutlineTransaction size="2em" color="darkBlue" />,
+      label: "Transaksi",
+      link: "/Apoteker/Transaksi",
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-[#ffcccc] relative">
+    <div className="min-h-screen bg-slate-400 relative">
       {/* Navbar */}
       <Navbar fluid rounded>
         <Navbar.Brand href="#">
@@ -75,16 +89,8 @@ export default function Apoteker() {
             label={<Avatar alt="User settings" img="/perawat.jpg" rounded />}
           >
             <Dropdown.Item href="/Apoteker/Profile">Profile</Dropdown.Item>
-            <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
             <Dropdown.Divider />
-            <Dropdown.Item href="/Apoteker/Obat">
-              <AiOutlineMedicineBox className="mr-1 text-blue-800" />
-              Obat
-            </Dropdown.Item>
-            <Dropdown.Item href="/Apoteker/Transaksi">
-              <AiOutlineTransaction className="mr-1 text-blue-800" />
-              Transaksi
-            </Dropdown.Item>
+            <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
           </Dropdown>
         </div>
       </Navbar>
@@ -119,6 +125,21 @@ export default function Apoteker() {
         </div>
       </div>
       {/* Box profile end */}
+
+      {/* Box Menu */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 ml-4">
+        {menuItems.map((menuItem, index) => (
+          <Link href={menuItem.link} key={index}>
+            <div className="bg-white backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer text-black">
+              <div className="flex flex-col items-center">
+                {menuItem.icon}
+                <p className="mt-2">{menuItem.label}</p>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+      {/* Box Menu End */}
     </div>
   );
 }

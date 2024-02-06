@@ -35,18 +35,18 @@ export default function ApotekerObat() {
   // Menu
   const menuItems = [
     {
-      icon: <FaListUl size="2em" color="pink" />,
+      icon: <FaListUl size="2em" color="darkBlue" />,
       label: "List",
       link: "/Apoteker/Obat/List",
     },
     {
-      icon: <MdSummarize size="2em" color="gray" />,
+      icon: <MdSummarize size="2em" color="darkBlue" />,
       label: "Rekap",
       link: "/Apoteker/Obat/Rekap",
     },
   ];
   return (
-    <div className="bg-[#ffcccc] h-screen">
+    <div className="bg-slate-400 min-h-screen">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
         <Breadcrumb.Item href="../Apoteker" icon={HiHome}>

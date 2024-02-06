@@ -378,7 +378,7 @@ export default function FormRm({ selectedPasien, setShowFormRm }) {
         ))}
 
         <div className="flex items-center gap-2 mt-8">
-          <Button color="dark" pill onClick={addTindakanEntry}>
+          <Button color="blue" pill onClick={addTindakanEntry}>
             <AiOutlinePlusCircle
               size="1.5em"
               style={{ marginRight: "0.5em" }}
@@ -395,7 +395,7 @@ export default function FormRm({ selectedPasien, setShowFormRm }) {
       </div>
 
       <div className="flex">
-        <Button className="m-2" type="submit">
+        <Button color="dark" className="m-2" type="submit">
           Kirim
         </Button>
       </div>

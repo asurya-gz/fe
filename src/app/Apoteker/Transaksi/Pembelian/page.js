@@ -151,7 +151,7 @@ export default function ApotekerTransaksiPembelian() {
   };
 
   return (
-    <div className="bg-[#ffcccc] min-h-screen">
+    <div className="bg-slate-400 min-h-screen">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
         <Breadcrumb.Item href="/Apoteker" icon={HiHome}>
@@ -258,12 +258,14 @@ export default function ApotekerTransaksiPembelian() {
                   required
                 />
               </div>
-              <p>Total Harga: Rp. {entry.jumlah * entry.harga}</p>
+              <p className="text-white mt-4">
+                Total Harga: Rp. {entry.jumlah * entry.harga}
+              </p>
             </div>
           ))}
 
           <div className="flex items-center gap-2 mt-8">
-            <Button color="dark" pill onClick={addDrugEntry}>
+            <Button color="blue" pill onClick={addDrugEntry}>
               <AiOutlinePlusCircle
                 size="1.5em"
                 style={{ marginRight: "0.5em" }}
@@ -275,8 +277,10 @@ export default function ApotekerTransaksiPembelian() {
             </Button>
           </div>
           {/* Display total harga for all entries */}
-          <p className="mt-4">Total Harga Semua Obat: Rp. {totalHarga}</p>
-          <Button className="bg-green-500" onClick={beliObat} type="button">
+          <p className="mt-4 text-white font-bold">
+            Total Harga Semua Obat: Rp. {totalHarga}
+          </p>
+          <Button className="bg-blue-800" onClick={beliObat} type="button">
             <AiOutlineShoppingCart
               size="1.5em"
               style={{ marginRight: "0.5em" }}
