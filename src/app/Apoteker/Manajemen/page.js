@@ -19,6 +19,10 @@ export default function AdminManajemen() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editedObat, setEditedObat] = useState({});
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const searchObat = (obat) => {
+    return obat.nama_obat.toLowerCase().includes(searchKeyword.toLowerCase());
+  };
 
   // fetch update obat
   const updateObat = async () => {
@@ -159,8 +163,17 @@ export default function AdminManajemen() {
         <Breadcrumb.Item href="#">Manajemen</Breadcrumb.Item>
       </Breadcrumb>
       {/* Breadcrumb end */}
+      <div className="mt-8 ml-4">
+        <input
+          type="text"
+          placeholder="Cari obat..."
+          value={searchKeyword}
+          onChange={(e) => setSearchKeyword(e.target.value)}
+          className="border p-2 w-64"
+        />
+      </div>
       {/* Button Tambah Obat */}
-      <Button className="mt-8 ml-4" color="blue" pill onClick={openModal}>
+      <Button className="mt-4 ml-4" color="blue" pill onClick={openModal}>
         Tambah Obat
       </Button>
       {/* Button Tambah Obat end */}
@@ -182,7 +195,7 @@ export default function AdminManajemen() {
             </Table.HeadCell>
           </Table.Head>
           <Table.Body>
-            {obatList.map((obat) => (
+            {obatList.filter(searchObat).map((obat) => (
               <Table.Row key={obat.id}>
                 <Table.Cell className="text-black bg-slate-300">
                   {obat.nama_obat}
