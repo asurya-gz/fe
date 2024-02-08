@@ -5,15 +5,11 @@ import axios from "axios";
 import { Breadcrumb } from "flowbite-react";
 import { HiHome } from "react-icons/hi";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
-import {
-  AiOutlineMedicineBox,
-  AiOutlineTransaction,
-  AiOutlineAppstore,
-  AiOutlineSearch,
-} from "react-icons/ai";
+import { AiOutlineMedicineBox, AiOutlineTransaction } from "react-icons/ai";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Alert } from "flowbite-react";
+import { FaCog } from "react-icons/fa";
+import HasilPenjualanObat from "./Transaksi/components/HasilPenjualanObat";
 
 export default function Apoteker() {
   const router = useRouter();
@@ -65,6 +61,11 @@ export default function Apoteker() {
       icon: <AiOutlineTransaction size="2em" color="darkBlue" />,
       label: "Transaksi",
       link: "/Apoteker/Transaksi",
+    },
+    {
+      icon: <FaCog size="2em" color="darkBlue" />,
+      label: "Manajemen Obat",
+      link: "/Apoteker/Manajemen",
     },
   ];
 
@@ -126,8 +127,15 @@ export default function Apoteker() {
       </div>
       {/* Box profile end */}
 
+      <div className="bg-white p-4 rounded-lg shadow-md mx-4">
+        <h3 className="text-xl font-bold mb-2 text-blue-800">
+          Pendapatan Hari Ini
+        </h3>
+        <HasilPenjualanObat />
+      </div>
+
       {/* Box Menu */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 ml-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 mx-4">
         {menuItems.map((menuItem, index) => (
           <Link href={menuItem.link} key={index}>
             <div className="bg-white backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer text-black">
@@ -139,7 +147,6 @@ export default function Apoteker() {
           </Link>
         ))}
       </div>
-      {/* Box Menu End */}
     </div>
   );
 }

@@ -103,7 +103,7 @@ export default function DokterProfile() {
   };
 
   return (
-    <div className="bg-[#ffcccc] min-h-screen">
+    <div className="bg-slate-400 min-h-screen">
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
         <Breadcrumb.Item href="/Dokter" icon={HiHome}>
           Dashboard

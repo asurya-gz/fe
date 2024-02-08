@@ -38,18 +38,18 @@ export default function AdminObatTransasi() {
   // Menu
   const menuItems = [
     {
-      icon: <GiBuyCard size="2em" color="green" />,
+      icon: <GiBuyCard size="2em" color="darkBlue" />,
       label: "Pembelian",
       link: "/Admin/Obat/Transaksi/Pembelian",
     },
     {
-      icon: <BsClockHistory size="2em" color="pink" />,
+      icon: <BsClockHistory size="2em" color="darkBlue" />,
       label: "Riwayat",
       link: "/Admin/Obat/Transaksi/Riwayat",
     },
   ];
   return (
-    <div className="bg-[#ffcccc] min-h-screen">
+    <div className="bg-slate-400 min-h-screen">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
         <Breadcrumb.Item href="/Admin" icon={HiHome}>

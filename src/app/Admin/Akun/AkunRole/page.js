@@ -32,29 +32,29 @@ export default function AdminAkunAkunRole() {
 
   const menuItems = [
     {
-      icon: <FaHospitalUser size="2em" color="blue" />,
+      icon: <FaHospitalUser size="2em" color="darkBlue" />,
       label: "Apoteker",
       link: "/Admin/Akun/AkunRole/Apoteker",
     },
     {
-      icon: <FaUserCog size="2em" color="gray" />,
+      icon: <FaUserCog size="2em" color="darkBlue" />,
       label: "Pemilik",
       link: "/Admin/Akun/AkunRole/Pemilik",
     },
     {
-      icon: <FaUserNurse size="2em" color="green" />,
+      icon: <FaUserNurse size="2em" color="darkBlue" />,
       label: "Perawat",
       link: "/Admin/Akun/AkunRole/Perawat",
     },
     {
-      icon: <FaUserMd size="2em" color="purple" />,
+      icon: <FaUserMd size="2em" color="darkBlue" />,
       label: "Dokter",
       link: "/Admin/Akun/AkunRole/Dokter",
     },
   ];
 
   return (
-    <div className="bg-[#ffcccc] min-h-screen">
+    <div className="bg-slate-400 min-h-screen">
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
         <Breadcrumb.Item href="/Admin" icon={HiHome}>
           Dashboard

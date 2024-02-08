@@ -153,10 +153,9 @@ export default function AdminManajemen() {
       {" "}
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
-        <Breadcrumb.Item href="/Admin" icon={HiHome}>
+        <Breadcrumb.Item href="/Apoteker" icon={HiHome}>
           Dashboard
         </Breadcrumb.Item>
-        <Breadcrumb.Item href="/Admin/Obat">Obat</Breadcrumb.Item>
         <Breadcrumb.Item href="#">Manajemen</Breadcrumb.Item>
       </Breadcrumb>
       {/* Breadcrumb end */}

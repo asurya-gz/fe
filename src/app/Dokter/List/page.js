@@ -96,7 +96,7 @@ const ListPasien = () => {
   return (
     <div className="bg-slate-400 min-h-screen">
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
-        <Breadcrumb.Item href="/Perawat" icon={HiHome}>
+        <Breadcrumb.Item href="/Dokter" icon={HiHome}>
           Dashboard
         </Breadcrumb.Item>
         <Breadcrumb.Item href="#">List Pasien</Breadcrumb.Item>

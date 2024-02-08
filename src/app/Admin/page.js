@@ -18,6 +18,20 @@ export default function Admin() {
   const router = useRouter();
   const [user, setUser] = useState(null);
 
+  // Menu
+  const menuItems = [
+    {
+      icon: <FaCapsules size="2em" color="darkBlue" />,
+      label: "Obat",
+      link: "/Admin/Obat",
+    },
+    {
+      icon: <FaUser size="2em" color="darkBlue" />,
+      label: "Akun",
+      link: "/Admin/Akun",
+    },
+  ];
+
   useEffect(() => {
     // Fetch user details or check session status
     const fetchUser = async () => {
@@ -51,7 +65,7 @@ export default function Admin() {
     }
   };
   return (
-    <div className="min-h-screen bg-[#ffcccc] relative">
+    <div className="min-h-screen bg-slate-400 relative">
       {/* Navbar */}
       <Navbar fluid rounded>
         <Navbar.Brand href="#">
@@ -71,20 +85,8 @@ export default function Admin() {
             label={<Avatar alt="User settings" img="/perawat.jpg" rounded />}
           >
             <Dropdown.Item href="/Admin/Profile">Profile</Dropdown.Item>
-            <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
             <Dropdown.Divider />
-            <Dropdown.Item href="/Admin/Obat">
-              <FaCapsules className="mr-1 text-blue-800" />
-              Obat
-            </Dropdown.Item>
-            <Dropdown.Item href="/Admin/Akun">
-              <FaUser className="mr-1 text-blue-800" />
-              Akun
-            </Dropdown.Item>
-            <Dropdown.Item href="/Admin/Usg">
-              <FaLaptopMedical className="mr-1 text-blue-800" />
-              USG
-            </Dropdown.Item>
+            <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
           </Dropdown>
         </div>
       </Navbar>
@@ -119,6 +121,20 @@ export default function Admin() {
         </div>
       </div>
       {/* Box profile end */}
+      {/* Box Menu */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 ml-4">
+        {menuItems.map((menuItem, index) => (
+          <Link href={menuItem.link} key={index}>
+            <div className="bg-white backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer text-black">
+              <div className="flex flex-col items-center">
+                {menuItem.icon}
+                <p className="mt-2">{menuItem.label}</p>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+      {/* Box Menu End */}
     </div>
   );
 }

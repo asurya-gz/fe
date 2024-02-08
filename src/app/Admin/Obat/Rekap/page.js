@@ -186,7 +186,7 @@ export default function AdminObatRekap() {
   // Print end
 
   return (
-    <div className="bg-[#ffcccc] min-h-screen">
+    <div className="bg-slate-400 min-h-screen">
       {" "}
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
@@ -197,39 +197,42 @@ export default function AdminObatRekap() {
         <Breadcrumb.Item href="#">Rekap</Breadcrumb.Item>
       </Breadcrumb>
       {/* Breadcrumb end */}
-      {/* Cetak rekap Obat */}
-      <Button className="mt-8 ml-4" color="light" pill onClick={handlePrint}>
-        <FiPrinter size="1.5em" style={{ marginRight: "0.5em" }} />
-        Rekap
-      </Button>
-      {/* Cetak rekap Obat end */}
-      {/* Filter */}
-      <div className="mt-8 ml-4">
-        <select
-          value={filterValue}
-          onChange={(e) => setFilterValue(e.target.value)}
-          className="bg-[#333] text-white p-1 rounded-xl text-center outline-none cursor-pointer"
-        >
-          <option value="Semua">Semua</option>
-          <option value="Beli Obat">Beli Obat</option>
-          <option value="Obat Tersedia">Obat Tersedia</option>
-        </select>
+      <div className="flex">
+        {" "}
+        {/* Cetak rekap Obat */}
+        <Button className="mt-8 ml-4" color="blue" pill onClick={handlePrint}>
+          <FiPrinter size="1.5em" style={{ marginRight: "0.5em" }} />
+          Rekap
+        </Button>
+        {/* Cetak rekap Obat end */}
+        {/* Filter */}
+        <div className="mt-8 ml-4">
+          <select
+            value={filterValue}
+            onChange={(e) => setFilterValue(e.target.value)}
+            className="text-black p-2 bg-yellow-300 rounded-xl text-center outline-none cursor-pointer border-none"
+          >
+            <option value="Semua">Semua</option>
+            <option value="Beli Obat">Beli Obat</option>
+            <option value="Obat Tersedia">Obat Tersedia</option>
+          </select>
+        </div>
+        {/* Filter end */}
       </div>
-      {/* Filter end */}
       {/* Table rekap */}
-      <div className="overflow-x-auto mt-8">
+      <div className="overflow-x-auto mt-8 mx-4">
         <Table hoverable>
           <Table.Head>
-            <Table.HeadCell style={{ background: "#333", color: "white" }}>
+            <Table.HeadCell style={{ background: "darkBlue", color: "white" }}>
               Obat
             </Table.HeadCell>
-            <Table.HeadCell style={{ background: "#333", color: "white" }}>
+            <Table.HeadCell style={{ background: "darkBlue", color: "white" }}>
               Jenis
             </Table.HeadCell>
-            <Table.HeadCell style={{ background: "#333", color: "white" }}>
+            <Table.HeadCell style={{ background: "darkBlue", color: "white" }}>
               Jumlah
             </Table.HeadCell>
-            <Table.HeadCell style={{ background: "#333", color: "white" }}>
+            <Table.HeadCell style={{ background: "darkBlue", color: "white" }}>
               Saran Pembelian
             </Table.HeadCell>
           </Table.Head>
@@ -244,12 +247,16 @@ export default function AdminObatRekap() {
               })
               .map((obat) => (
                 <Table.Row key={obat.id}>
-                  <Table.Cell className="text-black">
+                  <Table.Cell className="text-black bg-slate-300">
                     {obat.nama_obat}
                   </Table.Cell>
-                  <Table.Cell className="text-black">{obat.jenis}</Table.Cell>
-                  <Table.Cell className="text-black">{obat.jumlah}</Table.Cell>
-                  <Table.Cell className="text-black">
+                  <Table.Cell className="text-black bg-slate-300">
+                    {obat.jenis}
+                  </Table.Cell>
+                  <Table.Cell className="text-black bg-slate-300">
+                    {obat.jumlah}
+                  </Table.Cell>
+                  <Table.Cell className="text-black bg-slate-300">
                     {handleSaranPembelian(obat.jumlah)}
                   </Table.Cell>
                 </Table.Row>

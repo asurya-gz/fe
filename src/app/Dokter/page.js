@@ -5,9 +5,9 @@ import axios from "axios";
 import { Breadcrumb } from "flowbite-react";
 import { HiHome } from "react-icons/hi";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
-import { FaFileMedicalAlt, FaLaptopMedical, FaBookOpen } from "react-icons/fa";
-import Link from "next/link";
+import { CiViewList } from "react-icons/ci";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Dokter() {
   const router = useRouter();
@@ -45,9 +45,16 @@ export default function Dokter() {
       console.error("Logout failed:", error.message);
     }
   };
-
+  // Menu
+  const menuItems = [
+    {
+      icon: <CiViewList size="2em" color="darkBlue" />,
+      label: "Pasien (RM)",
+      link: "/Dokter/List",
+    },
+  ];
   return (
-    <div className="min-h-screen bg-[#ffcccc] relative">
+    <div className="min-h-screen bg-slate-400 relative">
       {/* Navbar */}
       <Navbar fluid rounded>
         <Navbar.Brand href="#">
@@ -67,12 +74,8 @@ export default function Dokter() {
             label={<Avatar alt="User settings" img="/perawat.jpg" rounded />}
           >
             <Dropdown.Item href="/Dokter/Profile">Profile</Dropdown.Item>
-            <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
             <Dropdown.Divider />
-            <Dropdown.Item href="/Dokter/Usg">
-              <FaLaptopMedical className="mr-1 font-bold text-blue-800" />
-              USG
-            </Dropdown.Item>
+            <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
           </Dropdown>
         </div>
       </Navbar>
@@ -107,6 +110,21 @@ export default function Dokter() {
         </div>
       </div>
       {/* Box profile end */}
+
+      {/* Box Menu */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 ml-4">
+        {menuItems.map((menuItem, index) => (
+          <Link href={menuItem.link} key={index}>
+            <div className="bg-white backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer text-black">
+              <div className="flex flex-col items-center">
+                {menuItem.icon}
+                <p className="mt-2">{menuItem.label}</p>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+      {/* Box Menu End */}
     </div>
   );
 }

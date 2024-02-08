@@ -55,7 +55,7 @@ export default function Perawat() {
     },
     {
       icon: <CiViewList size="2em" color="darkBlue" />,
-      label: "List pasien",
+      label: "Pasien (RM)",
       link: "/Perawat/List",
     },
   ];

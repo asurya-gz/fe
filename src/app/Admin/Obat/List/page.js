@@ -145,7 +145,7 @@ export default function AdminObatList() {
   // Fetch Data Obat end
 
   return (
-    <div className="min-h-screen bg-[#ffcccc]">
+    <div className="min-h-screen bg-slate-400">
       {" "}
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
@@ -157,31 +157,37 @@ export default function AdminObatList() {
       </Breadcrumb>
       {/* Breadcrumb end */}
       {/* Button Cetak List Obat */}
-      <Button className="mt-8 ml-4" color="light" pill onClick={handlePrint}>
+      <Button className="mt-8 ml-4" color="blue" pill onClick={handlePrint}>
         <FiPrinter size="1.5em" style={{ marginRight: "0.5em" }} />
         list
       </Button>
       {/* Button Cetak List Obat End*/}
       {/* Table */}
-      <div className="overflow-x-auto mt-8">
+      <div className="overflow-x-auto mt-8 mx-4">
         <Table hoverable>
           <Table.Head>
-            <Table.HeadCell style={{ background: "#333", color: "white" }}>
+            <Table.HeadCell style={{ background: "darkBlue", color: "white" }}>
               Nama Obat
             </Table.HeadCell>
-            <Table.HeadCell style={{ background: "#333", color: "white" }}>
+            <Table.HeadCell style={{ background: "darkBlue", color: "white" }}>
               Harga
             </Table.HeadCell>
-            <Table.HeadCell style={{ background: "#333", color: "white" }}>
+            <Table.HeadCell style={{ background: "darkBlue", color: "white" }}>
               Jenis
             </Table.HeadCell>
           </Table.Head>
           <Table.Body>
             {obatList.map((obat) => (
               <Table.Row key={obat.id}>
-                <Table.Cell className="text-black">{obat.nama_obat}</Table.Cell>
-                <Table.Cell className="text-black">Rp. {obat.harga}</Table.Cell>
-                <Table.Cell className="text-black">{obat.jenis}</Table.Cell>
+                <Table.Cell className="text-black bg-slate-300">
+                  {obat.nama_obat}
+                </Table.Cell>
+                <Table.Cell className="text-black bg-slate-300">
+                  Rp. {obat.harga}
+                </Table.Cell>
+                <Table.Cell className="text-black bg-slate-300">
+                  {obat.jenis}
+                </Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>

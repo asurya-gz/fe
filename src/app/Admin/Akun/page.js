@@ -248,7 +248,7 @@ export default function AdminAkun() {
   };
 
   return (
-    <div className="bg-[#ffcccc] min-h-screen">
+    <div className="bg-slate-400 min-h-screen">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
         <Breadcrumb.Item href="../Admin" icon={HiHome}>
@@ -267,7 +267,7 @@ export default function AdminAkun() {
       {/* Tambah user */}
       <Button
         className="ml-4 mt-4"
-        color="dark"
+        color="blue"
         pill
         onClick={() => setShowAddUserModal(true)}
       >
@@ -279,27 +279,17 @@ export default function AdminAkun() {
         <table className="min-w-full table-auto">
           <thead>
             <tr>
-              <th className="border border-slate-900 px-4 py-2 bg-slate-900 text-white">
-                Username
-              </th>
-              <th className="border border-slate-900 px-4 py-2 bg-slate-900 text-white">
-                Role
-              </th>
-              <th className="border border-slate-900 px-4 py-2 bg-slate-900 text-white">
-                Action
-              </th>
+              <th className="px-4 py-2 bg-blue-800 text-white">Username</th>
+              <th className="px-4 py-2 bg-blue-800 text-white">Role</th>
+              <th className="px-4 py-2 bg-blue-800 text-white">Action</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="bg-slate-300">
             {users.map((user) => (
               <tr key={user.id}>
-                <td className="border border-slate-900 px-4 py-2">
-                  {user.username}
-                </td>
-                <td className="border border-slate-900 px-4 py-2">
-                  {user.role}
-                </td>
-                <td className="border border-slate-900 px-4 py-2">
+                <td className="px-4 py-2">{user.username}</td>
+                <td className="px-4 py-2">{user.role}</td>
+                <td className="px-4 py-2">
                   <div className="flex flex-wrap justify-center">
                     <button
                       className="bg-blue-500 text-white px-2 py-1 m-1"

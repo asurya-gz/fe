@@ -107,7 +107,7 @@ export default function AdminProfile() {
   }, [isEditing, adminData]);
 
   return (
-    <div className="bg-[#ffcccc] min-h-screen p-8">
+    <div className="bg-slate-400 min-h-screen p-8">
       <Breadcrumb className="mb-4" aria-label="Default breadcrumb example">
         <Breadcrumb.Item href="/Admin" icon={HiHome}>
           Dashboard

@@ -35,33 +35,28 @@ export default function AdminObat() {
   // Menu
   const menuItems = [
     {
-      icon: <FaListUl size="2em" color="gray" />,
+      icon: <FaListUl size="2em" color="darkBlue" />,
       label: "List Obat",
       link: "/Admin/Obat/List",
     },
     {
-      icon: <MdSummarize size="2em" color="red" />,
+      icon: <MdSummarize size="2em" color="darkBlue" />,
       label: "Rekap Obat",
       link: "/Admin/Obat/Rekap",
     },
     {
-      icon: <FaSearch size="2em" color="brown" />,
-      label: "Pencarian Obat",
-      link: "/Admin/Obat/Pencarian",
-    },
-    {
-      icon: <FaCog size="2em" color="blue" />,
+      icon: <FaCog size="2em" color="darkBlue" />,
       label: "Manajemen Obat",
       link: "/Admin/Obat/Manajemen",
     },
     {
-      icon: <FaMoneyBill size="2em" color="green" />,
+      icon: <FaMoneyBill size="2em" color="darkBlue" />,
       label: "Transaksi Obat",
       link: "/Admin/Obat/Transaksi",
     },
   ];
   return (
-    <div className="bg-[#ffcccc] min-h-screen">
+    <div className="bg-slate-400 min-h-screen">
       {/* Breadcrumb */}
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
         <Breadcrumb.Item href="/Admin" icon={HiHome}>
