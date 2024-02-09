@@ -8,10 +8,29 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { FiPrinter } from "react-icons/fi";
 
-export default function AdminObatList() {
+export default function ApotekerObatList() {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [obatList, setObatList] = useState([]);
+  const [filter, setFilter] = useState("ALL");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    // Fetch the list of drugs based on the selected filter
+    const fetchObatList = async () => {
+      try {
+        const response = await axios.get(
+          `https://bekk.up.railway.app/obat?jenis=${filter}`
+        );
+        console.log("Obat list:", response.data.obat);
+        setObatList(response.data.obat);
+      } catch (error) {
+        console.error("Error fetching obat list:", error.message);
+      }
+    };
+
+    fetchObatList();
+  }, [filter]); // Update the data when the filter changes
 
   // Print
   const handlePrint = async () => {
@@ -127,6 +146,11 @@ export default function AdminObatList() {
   }, [router]);
   // Session end
 
+  // Filter the drug list based on search query
+  const filteredObatList = obatList.filter((obat) =>
+    obat.nama_obat.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   // Fetch Data Obat
   useEffect(() => {
     // Fetch the list of drugs
@@ -156,12 +180,37 @@ export default function AdminObatList() {
         <Breadcrumb.Item href="#">List</Breadcrumb.Item>
       </Breadcrumb>
       {/* Breadcrumb end */}
-      {/* Button Cetak List Obat */}
-      <Button className="mt-8 ml-4" color="blue" pill onClick={handlePrint}>
-        <FiPrinter size="1.5em" style={{ marginRight: "0.5em" }} />
-        list
-      </Button>
-      {/* Button Cetak List Obat End*/}
+      <div className="mt-8 ml-4">
+        <input
+          type="text"
+          placeholder="Cari obat..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="rounded-2xl border-none bg-slate-300 px-4 py-2"
+        />
+      </div>
+      <div className="flex">
+        {" "}
+        {/* Button Cetak List Obat */}
+        <Button className="mt-8 ml-4" color="blue" pill onClick={handlePrint}>
+          <FiPrinter size="1.5em" style={{ marginRight: "0.5em" }} />
+          Cetak
+        </Button>
+        {/* Button Cetak List Obat End*/}
+        {/* Dropdown Filter */}
+        <div className="mt-8 ml-4">
+          <select
+            className="rounded-2xl border-none bg-yellow-300"
+            id="jenisFilter"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+          >
+            <option value="INJEKSI">Injeksi</option>
+            <option value="OBAT">Obat</option>
+          </select>
+        </div>
+        {/* Dropdown Filter End */}
+      </div>
       {/* Table */}
       <div className="overflow-x-auto mt-8 mx-4">
         <Table hoverable>
@@ -177,7 +226,7 @@ export default function AdminObatList() {
             </Table.HeadCell>
           </Table.Head>
           <Table.Body>
-            {obatList.map((obat) => (
+            {filteredObatList.map((obat) => (
               <Table.Row key={obat.id}>
                 <Table.Cell className="text-black bg-slate-300">
                   {obat.nama_obat}

@@ -9,6 +9,8 @@ import { CiViewList } from "react-icons/ci";
 import { useRouter } from "next/navigation";
 import { GrDocumentUser } from "react-icons/gr";
 import Link from "next/link";
+import TotalKunjungan from "./components/TotalKunjungan";
+
 export default function Perawat() {
   const router = useRouter();
   const [user, setUser] = useState(null);
@@ -118,8 +120,15 @@ export default function Perawat() {
       </div>
       {/* Box profile end */}
 
+      <div className="bg-white p-4 rounded-lg shadow-md mx-4">
+        <h3 className="text-xl font-bold mb-2 text-blue-800">
+          Total Pasien Hari Ini
+        </h3>
+        <TotalKunjungan />
+      </div>
+
       {/* Box Menu */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 ml-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 mx-4">
         {menuItems.map((menuItem, index) => (
           <Link href={menuItem.link} key={index}>
             <div className="bg-white backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer text-black">

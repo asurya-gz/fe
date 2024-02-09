@@ -61,7 +61,7 @@ export default function AdminObatTransasi() {
       {/* Breadcrumb end */}
 
       {/* Box Menu */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 ml-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 mx-4">
         {menuItems.map((menuItem, index) => (
           <Link href={menuItem.link} key={index}>
             <div className="bg-white bg-opacity-50 backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer text-black">

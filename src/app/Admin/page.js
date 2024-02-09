@@ -13,6 +13,8 @@ import {
   FaFileMedicalAlt,
   FaLaptopMedical,
 } from "react-icons/fa";
+import { GrDocumentUser } from "react-icons/gr";
+import { CiViewList } from "react-icons/ci";
 
 export default function Admin() {
   const router = useRouter();
@@ -29,6 +31,16 @@ export default function Admin() {
       icon: <FaUser size="2em" color="darkBlue" />,
       label: "Akun",
       link: "/Admin/Akun",
+    },
+    {
+      icon: <GrDocumentUser size="2em" color="darkBlue" />,
+      label: "Pendaftaran",
+      link: "/Admin/Pendaftaran",
+    },
+    {
+      icon: <CiViewList size="2em" color="darkBlue" />,
+      label: "List (RM)",
+      link: "/Admin/List",
     },
   ];
 
@@ -122,7 +134,7 @@ export default function Admin() {
       </div>
       {/* Box profile end */}
       {/* Box Menu */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 ml-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 mx-4">
         {menuItems.map((menuItem, index) => (
           <Link href={menuItem.link} key={index}>
             <div className="bg-white backdrop-blur-md p-6 rounded-lg shadow-md text-center cursor-pointer text-black">
