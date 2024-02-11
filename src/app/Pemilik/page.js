@@ -17,6 +17,8 @@ import {
 import { Alert } from "flowbite-react";
 import LineChart from "../components/Pemilik/LineChart";
 import CountingAnimation from "../components/Pemilik/Counting";
+import TotalKunjungan from "../Perawat/components/TotalKunjungan";
+import HasilPenjualanObat from "../Apoteker/Transaksi/components/HasilPenjualanObat";
 
 export default function Pemilik() {
   const router = useRouter();
@@ -127,6 +129,19 @@ export default function Pemilik() {
         </div>
       </div>
       {/* Box profile end */}
+      <div className="bg-white p-4 rounded-lg shadow-md mx-4 mb-4">
+        <h3 className="text-xl font-bold mb-2 text-blue-800">
+          Pendapatan Obat Hari Ini
+        </h3>
+        <HasilPenjualanObat />
+      </div>
+
+      <div className="bg-white p-4 rounded-lg shadow-md mx-4">
+        <h3 className="text-xl font-bold mb-2 text-blue-800">
+          Total Pasien Hari Ini
+        </h3>
+        <TotalKunjungan />
+      </div>
 
       {/* Responsive Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">

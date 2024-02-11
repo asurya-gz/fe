@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { format } from "date-fns";
+import { FiPrinter } from "react-icons/fi";
 
 export default function RiwayatRM({ selectedPasien }) {
   const [riwayatData, setRiwayatData] = useState([]);
@@ -392,13 +393,19 @@ export default function RiwayatRM({ selectedPasien }) {
             onClick={handlePrint}
             className="p-2 bg-blue-950 text-white font-bold mt-4 rounded"
           >
-            Cetak Rekam Medis
+            <div className="flex">
+              <FiPrinter size="1.5em" style={{ marginRight: "0.5em" }} />
+              Rekam Medis
+            </div>
           </button>
           <button
             onClick={handleBukti}
             className="ml-4 p-2 bg-amber-400 text-white font-bold mt-4 rounded"
           >
-            Cetak Bukti Tindakan
+            <div className="flex">
+              <FiPrinter size="1.5em" style={{ marginRight: "0.5em" }} />
+              Tindakan
+            </div>
           </button>
           {/* Cetak end */}
         </div>

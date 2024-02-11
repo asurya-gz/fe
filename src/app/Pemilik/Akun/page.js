@@ -7,6 +7,7 @@ import axios from "axios";
 import Link from "next/link";
 import { FaUserCog, FaUserMd } from "react-icons/fa";
 import { FaUserNurse, FaHospitalUser } from "react-icons/fa6";
+import JumlahAkunRole from "@/app/Admin/Akun/AkunRole/JumlahAkun";
 
 export default function PemilikAkun() {
   const router = useRouter();
@@ -51,6 +52,11 @@ export default function PemilikAkun() {
       label: "Dokter",
       link: "/Pemilik/Akun/Dokter",
     },
+    {
+      icon: <FaUserMd size="2em" color="darkBlue" />,
+      label: "Pemilik",
+      link: "/Pemilik/Akun/Pemilik",
+    },
   ];
 
   return (
@@ -61,6 +67,11 @@ export default function PemilikAkun() {
         </Breadcrumb.Item>
         <Breadcrumb.Item href="#">Akun</Breadcrumb.Item>
       </Breadcrumb>
+
+      <div className="bg-white p-4 rounded-lg shadow-md mx-4 my-4">
+        <h3 className="text-xl font-bold mb-2 text-blue-800">Data Akun</h3>
+        <JumlahAkunRole />
+      </div>
 
       {/* Box Menu */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 mx-4">

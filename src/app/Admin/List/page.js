@@ -43,9 +43,13 @@ const ListPasien = () => {
 
   const handleSearch = () => {
     // Filter the patient list based on the search query
-    const filteredList = pasienList.filter((pasien) =>
-      pasien.no_medrek.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+    const filteredList = pasienList.filter((pasien) => {
+      const lowerCaseSearchQuery = searchQuery.toLowerCase();
+      return (
+        pasien.no_medrek.toLowerCase().includes(lowerCaseSearchQuery) ||
+        pasien.nama.toLowerCase().includes(lowerCaseSearchQuery)
+      );
+    });
     setFilteredPasienList(filteredList);
   };
 
@@ -108,7 +112,7 @@ const ListPasien = () => {
         <input
           className="rounded"
           type="text"
-          placeholder="Search by No. Medrek"
+          placeholder="No.Medrek / Nama"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />

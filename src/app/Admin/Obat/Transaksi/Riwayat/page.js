@@ -471,6 +471,7 @@ export default function ApotekerTransaksiRiwayat() {
 
       {/* Table Riwayat */}
       <div className="overflow-x-auto mt-8 mx-4">
+        <p>*Klik Untuk Melihat Detail</p>
         <table className="min-w-full">
           <thead>
             <tr className="bg-blue-800 text-white">
@@ -527,7 +528,10 @@ export default function ApotekerTransaksiRiwayat() {
                 onClick={handlePrint}
                 className="border mb-4 border-blue-800 rounded ml-4 p-2 text-black"
               >
-                Cetak Pembelian Obat
+                <div className="flex">
+                  <FiPrinter size="1.5em" style={{ marginRight: "0.5em" }} />
+                  Cetak
+                </div>
               </button>
               <div className="overflow-x-auto">
                 <table className="min-w-full border border-gray-300">

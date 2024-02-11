@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { FiPrinter } from "react-icons/fi";
 
 const HasilPenjualanObat = () => {
   const [totalPendapatan, setTotalPendapatan] = useState(0);

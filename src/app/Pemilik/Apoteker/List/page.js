@@ -13,6 +13,7 @@ export default function ApotekerObatList() {
   const [user, setUser] = useState(null);
   const [obatList, setObatList] = useState([]);
   const [filter, setFilter] = useState("ALL");
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     // Fetch the list of drugs based on the selected filter
@@ -145,6 +146,11 @@ export default function ApotekerObatList() {
   }, [router]);
   // Session end
 
+  // Filter the drug list based on search query
+  const filteredObatList = obatList.filter((obat) =>
+    obat.nama_obat.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   // Fetch Data Obat
   useEffect(() => {
     // Fetch the list of drugs
@@ -170,10 +176,19 @@ export default function ApotekerObatList() {
         <Breadcrumb.Item href="/Pemilik" icon={HiHome}>
           Dashboard
         </Breadcrumb.Item>
-        <Breadcrumb.Item href="/Pemilik/Apoteker">Apoteker</Breadcrumb.Item>
+        <Breadcrumb.Item href="/Pemilik/Apoteker">Obat</Breadcrumb.Item>
         <Breadcrumb.Item href="#">List</Breadcrumb.Item>
       </Breadcrumb>
       {/* Breadcrumb end */}
+      <div className="mt-8 ml-4">
+        <input
+          type="text"
+          placeholder="Cari obat..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="rounded-2xl border-none bg-slate-300 px-4 py-2"
+        />
+      </div>
       <div className="flex">
         {" "}
         {/* Button Cetak List Obat */}
@@ -211,7 +226,7 @@ export default function ApotekerObatList() {
             </Table.HeadCell>
           </Table.Head>
           <Table.Body>
-            {obatList.map((obat) => (
+            {filteredObatList.map((obat) => (
               <Table.Row key={obat.id}>
                 <Table.Cell className="text-black bg-slate-300">
                   {obat.nama_obat}
