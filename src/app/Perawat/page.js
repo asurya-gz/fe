@@ -10,6 +10,8 @@ import { useRouter } from "next/navigation";
 import { GrDocumentUser } from "react-icons/gr";
 import Link from "next/link";
 import TotalKunjungan from "./components/TotalKunjungan";
+import { FaTable } from "react-icons/fa";
+import { FaRegBuilding } from "react-icons/fa6";
 
 export default function Perawat() {
   const router = useRouter();
@@ -59,6 +61,16 @@ export default function Perawat() {
       icon: <CiViewList size="2em" color="darkBlue" />,
       label: "Pasien (RM)",
       link: "/Perawat/List",
+    },
+    {
+      icon: <FaTable size="2em" color="darkBlue" />,
+      label: "Jadwal Praktik Dokter",
+      link: "/Perawat/JadwalPraktikDokter",
+    },
+    {
+      icon: <FaRegBuilding size="2em" color="darkBlue" />,
+      label: "Kelola Ruangan",
+      link: "/Perawat/KelolaRuangan",
     },
   ];
 

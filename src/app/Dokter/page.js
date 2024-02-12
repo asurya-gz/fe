@@ -8,6 +8,7 @@ import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import { CiViewList } from "react-icons/ci";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { FaTable } from "react-icons/fa";
 
 export default function Dokter() {
   const router = useRouter();
@@ -51,6 +52,11 @@ export default function Dokter() {
       icon: <CiViewList size="2em" color="darkBlue" />,
       label: "Pasien (RM)",
       link: "/Dokter/List",
+    },
+    {
+      icon: <FaTable size="2em" color="darkBlue" />,
+      label: "Jadwal Praktik",
+      link: "/Dokter/Jadwal",
     },
   ];
   return (

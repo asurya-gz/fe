@@ -7,12 +7,7 @@ import { HiHome } from "react-icons/hi";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import {
-  FaCapsules,
-  FaUser,
-  FaFileMedicalAlt,
-  FaLaptopMedical,
-} from "react-icons/fa";
+import { FaCapsules, FaUser, FaTable } from "react-icons/fa";
 import { GrDocumentUser } from "react-icons/gr";
 import { CiViewList } from "react-icons/ci";
 
@@ -41,6 +36,11 @@ export default function Admin() {
       icon: <CiViewList size="2em" color="darkBlue" />,
       label: "List (RM)",
       link: "/Admin/List",
+    },
+    {
+      icon: <FaTable size="2em" color="darkBlue" />,
+      label: "Jadwal Praktik Dokter",
+      link: "/Admin/JadwalPraktikDokter",
     },
   ];
 
