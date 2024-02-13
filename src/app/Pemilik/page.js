@@ -69,6 +69,11 @@ export default function Pemilik() {
       label: "Obat",
       link: "/Pemilik/Apoteker",
     },
+    {
+      icon: <FaUserNurse size="2em" color="darkBlue" />,
+      label: "Ruangan",
+      link: "/Pemilik/Ruangan",
+    },
   ];
 
   return (

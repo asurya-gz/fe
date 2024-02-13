@@ -42,6 +42,11 @@ export default function Admin() {
       label: "Jadwal Praktik Dokter",
       link: "/Admin/JadwalPraktikDokter",
     },
+    {
+      icon: <FaTable size="2em" color="darkBlue" />,
+      label: "Ruangan",
+      link: "/Admin/Ruangan",
+    },
   ];
 
   useEffect(() => {

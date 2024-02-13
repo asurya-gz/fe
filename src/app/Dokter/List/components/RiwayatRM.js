@@ -260,26 +260,43 @@ export default function RiwayatRM({ selectedPasien }) {
           </tr>
         </table>
   
-          <h3>Tindakan</h3>
-          <table>
+        <h3>Tindakan</h3>
+        <table>
+          <thead>
             <tr>
               <th>Tindakan</th>
+              <th>Jumlah</th>
               <th>Harga</th>
             </tr>
+          </thead>
+          <tbody>
             ${tindakanData
               .map(
-                (tindakan) => `<tr>
-                  <td>${tindakan.nama_tindakan}</td>
-                  <td>${tindakan.harga}</td>
-                </tr>`
+                (tindakan) => `
+                  <tr>
+                    <td>${tindakan.nama_tindakan}</td>
+                    <td>${tindakan.jumlah}</td>
+                    <td>${
+                      parseInt(tindakan.harga, 10) *
+                      parseInt(tindakan.jumlah, 10)
+                    }</td>
+                  </tr>
+                `
               )
               .join("")}
-          </table>
-  
-          <p>Total Harga: ${tindakanData.reduce(
-            (total, tindakan) => total + parseInt(tindakan.harga, 10),
+          </tbody>
+        </table>
+        
+        <p>
+          Total Harga:Rp. 
+          ${tindakanData.reduce(
+            (total, tindakan) =>
+              total +
+              parseInt(tindakan.harga, 10) * parseInt(tindakan.jumlah, 10),
             0
-          )}</p>
+          )}
+        </p>
+        
 
           <!-- Signature Section -->
         <div style="margin-top: 20px;">
@@ -373,9 +390,14 @@ export default function RiwayatRM({ selectedPasien }) {
                     <span className="font-semibold">Tindakan:</span>{" "}
                     {tindakan.nama_tindakan}
                   </p>
+                  <p>
+                    <span className="font-semibold">Jumlah:</span>{" "}
+                    {tindakan.jumlah}
+                  </p>
                   <p className="ml-3">
                     <span className="font-semibold">Harga:</span>{" "}
-                    {tindakan.harga}
+                    {parseInt(tindakan.harga, 10) *
+                      parseInt(tindakan.jumlah, 10)}
                   </p>
                 </div>
               </li>
@@ -384,10 +406,13 @@ export default function RiwayatRM({ selectedPasien }) {
           <p>
             Total Harga:{" "}
             {tindakanData.reduce(
-              (total, tindakan) => total + parseInt(tindakan.harga, 10),
+              (total, tindakan) =>
+                total +
+                parseInt(tindakan.harga, 10) * parseInt(tindakan.jumlah, 10),
               0
             )}
           </p>
+
           {/* Cetak */}
           <button
             onClick={handlePrint}
