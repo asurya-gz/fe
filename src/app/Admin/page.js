@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FaCapsules, FaUser, FaTable } from "react-icons/fa";
 import { GrDocumentUser } from "react-icons/gr";
+import { FaRegBuilding } from "react-icons/fa6";
 import { CiViewList } from "react-icons/ci";
 
 export default function Admin() {
@@ -43,7 +44,7 @@ export default function Admin() {
       link: "/Admin/JadwalPraktikDokter",
     },
     {
-      icon: <FaTable size="2em" color="darkBlue" />,
+      icon: <FaRegBuilding size="2em" color="darkBlue" />,
       label: "Ruangan",
       link: "/Admin/Ruangan",
     },

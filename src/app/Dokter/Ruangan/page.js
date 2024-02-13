@@ -56,7 +56,7 @@ export default function PemilikRuangan() {
   return (
     <div className="min-h-screen bg-slate-400">
       <Breadcrumb className="pt-4 pl-4" aria-label="Default breadcrumb example">
-        <Breadcrumb.Item href="/Pemilik" icon={HiHome}>
+        <Breadcrumb.Item href="/Dokter" icon={HiHome}>
           Dashboard
         </Breadcrumb.Item>
         <Breadcrumb.Item href="#">Ruangan</Breadcrumb.Item>

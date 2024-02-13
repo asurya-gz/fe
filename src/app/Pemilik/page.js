@@ -19,6 +19,7 @@ import LineChart from "../components/Pemilik/LineChart";
 import CountingAnimation from "../components/Pemilik/Counting";
 import TotalKunjungan from "../Perawat/components/TotalKunjungan";
 import HasilPenjualanObat from "../Apoteker/Transaksi/components/HasilPenjualanObat";
+import { FaRegBuilding } from "react-icons/fa6";
 
 export default function Pemilik() {
   const router = useRouter();
@@ -70,7 +71,7 @@ export default function Pemilik() {
       link: "/Pemilik/Apoteker",
     },
     {
-      icon: <FaUserNurse size="2em" color="darkBlue" />,
+      icon: <FaRegBuilding size="2em" color="darkBlue" />,
       label: "Ruangan",
       link: "/Pemilik/Ruangan",
     },

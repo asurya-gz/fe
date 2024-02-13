@@ -9,6 +9,7 @@ import { CiViewList } from "react-icons/ci";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { FaTable } from "react-icons/fa";
+import { FaRegBuilding } from "react-icons/fa6";
 
 export default function Dokter() {
   const router = useRouter();
@@ -57,6 +58,11 @@ export default function Dokter() {
       icon: <FaTable size="2em" color="darkBlue" />,
       label: "Jadwal Praktik",
       link: "/Dokter/Jadwal",
+    },
+    {
+      icon: <FaRegBuilding size="2em" color="darkBlue" />,
+      label: "Ruangan",
+      link: "/Dokter/Ruangan",
     },
   ];
   return (
