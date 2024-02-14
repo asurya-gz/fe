@@ -75,6 +75,11 @@ export default function Pemilik() {
       label: "Ruangan",
       link: "/Pemilik/Ruangan",
     },
+    {
+      icon: <FaRegBuilding size="2em" color="darkBlue" />,
+      label: "Riwayat Rekam Medis",
+      link: "/Pemilik/List",
+    },
   ];
 
   return (
