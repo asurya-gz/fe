@@ -7,6 +7,7 @@ import { HiHome } from "react-icons/hi";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import BarChart from "../components/Pemilik/BarChart";
 import Link from "next/link";
+import { CiViewList } from "react-icons/ci";
 import { useRouter } from "next/navigation";
 import {
   FaUserNurse,
@@ -76,7 +77,7 @@ export default function Pemilik() {
       link: "/Pemilik/Ruangan",
     },
     {
-      icon: <FaRegBuilding size="2em" color="darkBlue" />,
+      icon: <CiViewList size="2em" color="darkBlue" />,
       label: "Riwayat Rekam Medis",
       link: "/Pemilik/List",
     },
